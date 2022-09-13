@@ -187,3 +187,15 @@ print(f"SUPPRIMER(L1, 1) -> {L1}")
 
 # Recherche d'éléments
 print(f"RECHERCHER(L1, 2) -> {RECHERCHER(L1, 2)}")
+
+"""
+Résultat :
+>>> INSERER(L1, 1, 1) -> [1, 1, 0, 0, 0, 0]
+>>> INSERER(L1, 1, 1) -> [2, 1, 2, 0, 0, 0]
+>>> INSERER(L1, 1, 1) -> [3, 1, 2, 3, 0, 0]
+>>> INSERER(L1, 8, 1) -> [4, 8, 1, 2, 3, 0]
+>>> MODIFIER(L1, 6, 1) -> [4, 6, 1, 2, 3, 0]
+>>> LIRE(L1, 1) -> 6
+>>> SUPPRIMER(L1, 1) -> [3, 1, 2, 3, 0, 0]
+>>> RECHERCHER(L1, 2) -> 2
+"""
