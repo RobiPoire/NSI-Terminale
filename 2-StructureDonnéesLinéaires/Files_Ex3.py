@@ -9,15 +9,9 @@ longueur du tableau, ils repartent au début du tableau.
 
 __author__ = "RobiPoire"
 
-n = 4
-
 
 def CREER_FILE_VIDE() -> list:
-    """Crée une file vide
-    La première case du tableau (d'indice 0) contient l'indice de la tête de la file. 
-    La deuxième case du tableau (d'indice 1) contient l'indice de la queue de la file, c'est-à-dire la prochaine case disponible pour la queue. 
-    La troisième case du tableau (d'indice 2) contient le nombre d'éléments présents dans la file, c'est-à-dire la taille de la file. 
-    Les cases suivantes du tableau (d'indices 3 à n + 2) contiennent les éléments de la file ou sont vides.
+    """Crée une file vide de taille n
 
     Returns:
         list: Une file vide
@@ -90,6 +84,8 @@ def EST_PLEINE(F: list) -> bool:
 
 #! Exemple d'utilisation
 
+
+n = 4
 
 F = CREER_FILE_VIDE()
 print(f"F = {F}")
