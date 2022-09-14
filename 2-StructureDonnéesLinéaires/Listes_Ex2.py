@@ -1,5 +1,7 @@
 """
-Structure de données linéaires - Exercice 2
+Les listes - Exercice 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Implémenter en Python chaque fonction du type abstrait Liste.
 """
 __author__ = "RobiPoire"
 
