@@ -1,20 +1,20 @@
 """
-Les piles - Exercice 2
+Les piles - Exercice 3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Implémenter en Python les opérations classiques sur les piles à l'aide d'un tableau que l'on
-"simulera" à l'aide d'une liste. On supposera que le tableau a une taille fixe, par exemple 10.
+Proposer une implémentation des opérations classiques de la pile à l'aide des méthodes .pop() 
+et .append() du type liste de Python.
 """
 
 __author__ = "RobiPoire"
 
 
 def CREER_PILE_VIDE() -> list:
-    """Crée une pile vide de taille n
+    """Crée une pile vide
 
     Returns:
-        list: Une pile vide de taille n
+        list: Une pile vide
     """
-    return [0]*(n+1)
+    return [0]
 
 
 def EMPILER(P: list, e: object) -> None:
@@ -30,7 +30,7 @@ def EMPILER(P: list, e: object) -> None:
     if EST_PLEINE(P):
         raise IndexError("Pile pleine")
     P[0] += 1
-    P[P[0]] = e
+    P.append(e)
 
 
 def DEPILER(P: list) -> object:
@@ -47,10 +47,8 @@ def DEPILER(P: list) -> object:
     """
     if EST_VIDE(P):
         raise IndexError("Pile vide")
-    sommet = P[P[0]]
-    P[P[0]] = 0
     P[0] -= 1
-    return sommet
+    return P.pop()
 
 
 def EST_VIDE(P: list) -> bool:
@@ -62,7 +60,7 @@ def EST_VIDE(P: list) -> bool:
     Returns:
         bool: True si la pile est vide, False sinon
     """
-    return P[0] == 0
+    return P[0] <= 0
 
 
 def EST_PLEINE(P: list) -> bool:
@@ -74,7 +72,7 @@ def EST_PLEINE(P: list) -> bool:
     Returns:
         bool: True si la pile est pleine, False sinon
     """
-    return P[0] == n
+    return P[0] >= n
 
 
 #! Exemple d'utilisation
@@ -88,6 +86,7 @@ print(f"P= {P}")
 EMPILER(P, 2)
 print(f"P= {P}")
 N = DEPILER(P)
+print(f"P= {P}")
 print(f"N= {N}")
 EMPILER(P, 5)
 print(f"P= {P}")
