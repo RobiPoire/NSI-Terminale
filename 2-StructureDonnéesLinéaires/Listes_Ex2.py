@@ -3,7 +3,10 @@ Les listes - Exercice 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Implémenter en Python chaque fonction du type abstrait Liste.
 """
-__author__ = "RobiPoire"
+__author__ = "RobiPoire & Lytho"
+
+# La taille maximum de la liste
+n = 5
 
 
 def CREER_LISTE_VIDE() -> list:
@@ -15,8 +18,8 @@ def CREER_LISTE_VIDE() -> list:
     Returns:
         list : Une liste vide de taille n
     """
-    if n == 0:
-        raise ValueError("n doit être supérieur ou égale à 2")
+    if n < 1:
+        raise ValueError("n doit être supérieur à 0")
     return [0] * (n+1)
 
 
@@ -34,12 +37,14 @@ def INSERER(L: list, e: object, i: int) -> None:
     """
     if i == 0:
         raise IndexError(
-            "L'index 0 est est réservé pour la longueur de la liste")
+            "L'index 0 est réservé pour la longueur de la liste")
     if EST_PLEIN(L):
         raise IndexError("Liste pleine")
     L[0] += 1
-    # Tout ce qui est après l'index i = [e] + tout ce qui est après l'index i
-    L[i:] = [e] + L[i:-1]
+    # Tout ce qui est après l'index i = tout ce qui est après l'index i-1 + [0]
+    for j in range(LONGUEUR(L), i, -1):
+        L[j] = L[j-1]
+    L[i] = e
 
 
 def SUPPRIMER(L: list, i: int) -> None:
@@ -55,12 +60,14 @@ def SUPPRIMER(L: list, i: int) -> None:
     """
     if i == 0:
         raise IndexError(
-            "L'index 0 est est réservé pour la longueur de la liste")
+            "L'index 0 est réservé pour la longueur de la liste")
     if EST_VIDE(L):
         raise IndexError("Liste vide")
     L[0] -= 1
     # Tout ce qui est après l'index i = tout ce qui est après l'index i+1 + [0]
-    L[i:] = L[i+1:] + [0]
+    for j in range(i, LONGUEUR(L)+1):
+        L[j] = L[j+1]
+    L[L[0]+1] = 0
 
 
 def RECHERCHER(L: list, e: object) -> int:
@@ -157,47 +164,37 @@ def EST_PLEIN(L: list) -> bool:
     if L[0] == n:
         return True
 
+
 #! Exemple d'utilisation
+if __name__ == "__main__":
+    # Longueur des listes (en comptant l'index 0)
 
+    # Création de la liste
+    L1 = CREER_LISTE_VIDE()
 
-# Longueur des listes (en comptant l'index 0)
-n = 5
+    # Insertion d'éléments
+    INSERER(L1, 1, 1)
+    print(f"INSERER(L1, 1, 1) -> {L1}")
+    INSERER(L1, 2, 2)
+    print(f"INSERER(L1, 2, 2) -> {L1}")
+    INSERER(L1, 3, 3)
+    print(f"INSERER(L1, 3, 3) -> {L1}")
+    INSERER(L1, 8, 1)
+    print(f"INSERER(L1, 8, 1) -> {L1}")
+    INSERER(L1, 12, 5)
+    print(f"INSERER(L1, 8, 1) -> {L1}")
 
-# Création de la liste
-L1 = CREER_LISTE_VIDE()
+    # Modification d'éléments
+    MODIFIER(L1, 6, 1)
+    print(f"MODIFIER(L1, 6, 1) -> {L1}")
 
-# Insertion d'éléments
-INSERER(L1, 1, 1)
-print(f"INSERER(L1, 1, 1) -> {L1}")
-INSERER(L1, 2, 2)
-print(f"INSERER(L1, 1, 1) -> {L1}")
-INSERER(L1, 3, 3)
-print(f"INSERER(L1, 1, 1) -> {L1}")
-INSERER(L1, 8, 1)
-print(f"INSERER(L1, 8, 1) -> {L1}")
+    # Lecture d'éléments
+    print(f"LIRE(L1, 1) -> {LIRE(L1, 1)}")
 
-# Modification d'éléments
-MODIFIER(L1, 6, 1)
-print(f"MODIFIER(L1, 6, 1) -> {L1}")
+    # Suppression d'éléments
+    SUPPRIMER(L1, 1)
+    print(f"SUPPRIMER(L1, 1) -> {L1}")
 
-# Lecture d'éléments
-print(f"LIRE(L1, 1) -> {LIRE(L1, 1)}")
-
-# Suppression d'éléments
-SUPPRIMER(L1, 1)
-print(f"SUPPRIMER(L1, 1) -> {L1}")
-
-# Recherche d'éléments
-print(f"RECHERCHER(L1, 2) -> {RECHERCHER(L1, 2)}")
-
-"""
-Résultat :
->>> INSERER(L1, 1, 1) -> [1, 1, 0, 0, 0, 0]
->>> INSERER(L1, 1, 1) -> [2, 1, 2, 0, 0, 0]
->>> INSERER(L1, 1, 1) -> [3, 1, 2, 3, 0, 0]
->>> INSERER(L1, 8, 1) -> [4, 8, 1, 2, 3, 0]
->>> MODIFIER(L1, 6, 1) -> [4, 6, 1, 2, 3, 0]
->>> LIRE(L1, 1) -> 6
->>> SUPPRIMER(L1, 1) -> [3, 1, 2, 3, 0, 0]
->>> RECHERCHER(L1, 2) -> 2
-"""
+    # Recherche d'éléments
+    print(f"RECHERCHER(L1, 2) -> {RECHERCHER(L1, 2)}")
+ 
