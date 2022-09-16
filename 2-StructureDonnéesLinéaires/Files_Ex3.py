@@ -9,6 +9,9 @@ longueur du tableau, ils repartent au début du tableau.
 
 __author__ = "RobiPoire"
 
+# La taille maximum de la file
+n = 4
+
 
 def CREER_FILE_VIDE() -> list:
     """Crée une file vide de taille n
@@ -30,7 +33,6 @@ def ENFILER(F: list, e: object):
         raise IndexError("La file est pleine")
     # Si la queue dépasse la taille du tableau, on la ramène au début du tableau en décalant la tête
     if F[1] == n + 3:
-        print("Décalage de la tête de la file")
         F[0] = 3
         F[1] = F[2]+3
         for i in range(F[2]):
@@ -82,31 +84,44 @@ def EST_PLEINE(F: list) -> bool:
     """
     return F[2] == n
 
+
 #! Exemple d'utilisation
+# Se lance uniquement si le fichier est exécuté
+if __name__ == "__main__":
 
+    # Création de la file
+    F = CREER_FILE_VIDE()
 
-n = 4
+    # Enfiler des éléments
+    print(f"F = {F}")
+    ENFILER(F, 21)
+    print(f"F = {F}")
+    ENFILER(F, 22)
+    print(f"F = {F}")
+    ENFILER(F, 23)
+    print(f"F = {F}")
 
-F = CREER_FILE_VIDE()
-print(f"F = {F}")
-ENFILER(F, 21)
-print(f"F = {F}")
-ENFILER(F, 22)
-print(f"F = {F}")
-ENFILER(F, 23)
-print(f"F = {F}")
-N = DEFILER(F)
-print(f"N = {N}")
-print(f"F = {F}")
-ENFILER(F, 24)
-print(f"F = {F}")
-ENFILER(F, 25)
-print(f"F = {F}")
-N = DEFILER(F)
-print(f"N = {N}")
-print(f"F = {F}")
-ENFILER(F, 26)
-print(f"F = {F}")
-N = DEFILER(F)
-print(f"N = {N}")
-print(f"F = {F}")
+    # Défiler un élément
+    N = DEFILER(F)
+    print(f"N = {N}")
+    print(f"F = {F}")
+
+    # Enfiler des éléments
+    ENFILER(F, 24)
+    print(f"F = {F}")
+    ENFILER(F, 25)
+    print(f"F = {F}")
+
+    # Défiler un élément
+    N = DEFILER(F)
+    print(f"N = {N}")
+    print(f"F = {F}")
+
+    # Enfiler un élément
+    ENFILER(F, 26)
+    print(f"F = {F}")
+
+    # Défiler un élément
+    N = DEFILER(F)
+    print(f"N = {N}")
+    print(f"F = {F}")

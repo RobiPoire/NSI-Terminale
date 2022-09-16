@@ -27,8 +27,6 @@ def EMPILER(P: list, e: object) -> None:
     Raises:
         IndexError: Si la pile est pleine
     """
-    if EST_PLEINE(P):
-        raise IndexError("Pile pleine")
     P[0] += 1
     P.append(e)
 
@@ -63,34 +61,36 @@ def EST_VIDE(P: list) -> bool:
     return P[0] <= 0
 
 
-def EST_PLEINE(P: list) -> bool:
-    """Vérifie si la pile est pleine
-
-    Args:
-        P (list): La pile
-
-    Returns:
-        bool: True si la pile est pleine, False sinon
-    """
-    return P[0] >= n
-
-
 #! Exemple d'utilisation
+# Se lance uniquement si le fichier est exécuté
+if __name__ == "__main__":
 
-n = 10
+    # Ici la pile n'a pas de taille maximale
 
-P = CREER_PILE_VIDE()
-print(f"P= {P}")
-EMPILER(P, 3)
-print(f"P= {P}")
-EMPILER(P, 2)
-print(f"P= {P}")
-N = DEPILER(P)
-print(f"P= {P}")
-print(f"N= {N}")
-EMPILER(P, 5)
-print(f"P= {P}")
-EMPILER(P, 7)
-print(f"P= {P}")
-EMPILER(P, 9)
-print(f"P= {P}")
+    # Création d'une pile vide
+    P = CREER_PILE_VIDE()
+
+    # Empiler des éléments
+    print(f"P= {P}")
+    EMPILER(P, 3)
+    print(f"P= {P}")
+    EMPILER(P, 2)
+    print(f"P= {P}")
+
+    # Dépiler un élément
+    N = DEPILER(P)
+    print(f"N= {N}")
+    print(f"P= {P}")
+
+    # Empiler des éléments
+    EMPILER(P, 5)
+    print(f"P= {P}")
+    EMPILER(P, 7)
+    print(f"P= {P}")
+    EMPILER(P, 9)
+    print(f"P= {P}")
+
+    # Dépiler un élément
+    N = DEPILER(P)
+    print(f"N= {N}")
+    print(f"P= {P}")

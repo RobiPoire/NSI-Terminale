@@ -166,8 +166,8 @@ def EST_PLEIN(L: list) -> bool:
 
 
 #! Exemple d'utilisation
+# Se lance uniquement si le fichier est exécuté
 if __name__ == "__main__":
-    # Longueur des listes (en comptant l'index 0)
 
     # Création de la liste
     L1 = CREER_LISTE_VIDE()
@@ -197,4 +197,3 @@ if __name__ == "__main__":
 
     # Recherche d'éléments
     print(f"RECHERCHER(L1, 2) -> {RECHERCHER(L1, 2)}")
- 

@@ -7,6 +7,9 @@ Implémenter en Python les opérations classiques sur les piles à l'aide d'un t
 
 __author__ = "RobiPoire"
 
+# La taille maximum de la pile
+n = 4
+
 
 def CREER_PILE_VIDE() -> list:
     """Crée une pile vide de taille n
@@ -78,20 +81,33 @@ def EST_PLEINE(P: list) -> bool:
 
 
 #! Exemple d'utilisation
-
-n = 10
-
-P = CREER_PILE_VIDE()
-print(f"P= {P}")
-EMPILER(P, 3)
-print(f"P= {P}")
-EMPILER(P, 2)
-print(f"P= {P}")
-N = DEPILER(P)
-print(f"N= {N}")
-EMPILER(P, 5)
-print(f"P= {P}")
-EMPILER(P, 7)
-print(f"P= {P}")
-EMPILER(P, 9)
-print(f"P= {P}")
+# Se lance uniquement si le fichier est exécuté
+if __name__ == "__main__":
+    
+    # Création d'une pile vide
+    P = CREER_PILE_VIDE()
+    
+    # Empiler des éléments
+    print(f"P= {P}")
+    EMPILER(P, 3)
+    print(f"P= {P}")
+    EMPILER(P, 2)
+    print(f"P= {P}")
+    
+    # Dépiler un élément
+    N = DEPILER(P)
+    print(f"N= {N}")
+    print(f"P= {P}")
+    
+    # Empiler des éléments
+    EMPILER(P, 5)
+    print(f"P= {P}")
+    EMPILER(P, 7)
+    print(f"P= {P}")
+    EMPILER(P, 9)
+    print(f"P= {P}")
+    
+    # Dépiler un élément
+    N = DEPILER(P)
+    print(f"N= {N}")
+    print(f"P= {P}")

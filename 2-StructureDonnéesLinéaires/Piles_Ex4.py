@@ -4,10 +4,13 @@ Les piles - Exercice 4
 Une expression (algébrique ou arithmétique) est correctement parenthésée si d'une part, le 
 nombre de parenthèses et crochets, ouvrants et fermants, est le même et si d'autre part les 
 correspondances ne se croisent pas. 
+
 Par exemple, l'expression "[3 + (5 - 7] * 3)" n'est pas correctement parenthésée car la 
 parenthèse fermante ne peut pas venir après le crochet fermant. 
+
 1. Ecrire un algorithme qui s'aide d'une pile pour contrôler le bon parenthésage d'une 
 expression. 
+
 2. Ecrire en Python une fonction Est_bien_Parenthesee(E) qui renvoie True si l'expression E 
 est correctement parenthésée, et False dans le cas contraire.
 """
@@ -49,9 +52,11 @@ def Est_bien_Parenthesee(E: str) -> bool:
 
 
 #! Exemple d'utilisation
+# Se lance uniquement si le fichier est exécuté
+if __name__ == "__main__":
 
-# Test 1 : False
-print(Est_bien_Parenthesee("[3 + (5 - 7] * 3)"))
+    # Test 1 : False
+    print(Est_bien_Parenthesee("[3 + (5 - 7] * 3)"))
 
-# Test 2 : True
-print(Est_bien_Parenthesee("[3 + 5] - (7 * 3)"))
+    # Test 2 : True
+    print(Est_bien_Parenthesee("[3 + 5] - (7 * 3)"))
