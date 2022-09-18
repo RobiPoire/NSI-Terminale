@@ -1,6 +1,5 @@
 <a name="readme-top"></a>
 
-
 <br />
 <div align="center">
 
@@ -74,7 +73,6 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 -   [Github Copilot](https://copilot.github.com)
 -   [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [python]: https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white
@@ -84,8 +82,8 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 [jupyter]: https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white
 [jupyter-url]: https://jupyter.org/
 [license-shield]: https://img.shields.io/github/license/RobiPoire/NSI-Terminale.svg?style=for-the-badge
-[license-url]: https://github.com/RobiPoire/NSI-Terminale/blob/master/LICENSE.txt
+[license-url]: https://github.com/RobiPoire/NSI-Terminale/blob/main/LICENSE
 [commits-shield]: https://img.shields.io/github/last-commit/RobiPoire/NSI-Terminale?style=for-the-badge
 [commits-url]: https://github.com/RobiPoire/NSI-Terminale/commits/main
 [size-shield]: https://img.shields.io/github/repo-size/RobiPoire/NSI-Terminale?style=for-the-badge
-[size-url]: https://example.com
+[size-url]: https://github.com/RobiPoire/NSI-Terminale
