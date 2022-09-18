@@ -61,6 +61,7 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 ## Auteurs
 
 -   [@RobiPoire](https://github.com/RobiPoire)
+-   [@HabibLebsir](https://github.com/HabibLebsir)
 -   [@LythoPsycho](https://github.com/LythoPsycho)
 -   [@devnatiofrance](https://github.com/devnatiofrance)
 
