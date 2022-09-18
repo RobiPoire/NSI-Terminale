@@ -1,0 +1,7 @@
+# Exercice 1
+
+P = [B,O,N,J,O,U,R]
+N = []
+Repeter pour chaque éléments de P
+    val = DEPILER(P)
+    Ajouter val à N
