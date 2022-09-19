@@ -1,0 +1,9 @@
+Ce programme inverse l'ordre de la pile P en le dépilant et en le rempilant dans la pile Q. Le programme se termine lorsque la pile P est vide.
+La pile Q :
+    8
+    -
+    5
+    -
+    2
+    -
+    4
