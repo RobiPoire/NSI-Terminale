@@ -1,7 +1,6 @@
 # Exercice 1
 
-P = [B,O,N,J,O,U,R]
-N = []
-Repeter pour chaque éléments de P
-    val = DEPILER(P)
-    Ajouter val à N
+P = [8,B,O,N,J,O,U,R]
+N = CREER_PILE_VIDE()
+Tant que EST_VIDE(P) == Faux :
+    EMPILER(N,DEPILER(P))

@@ -8,13 +8,15 @@ et .append() du type liste de Python.
 __author__ = "RobiPoire"
 
 
+MAX = 10
+
 def CREER_PILE_VIDE() -> list:
     """Crée une pile vide
 
     Returns:
         list: Une pile vide
     """
-    return [0]
+    return []
 
 
 def EMPILER(P: list, e: object) -> None:
@@ -27,7 +29,8 @@ def EMPILER(P: list, e: object) -> None:
     Raises:
         IndexError: Si la pile est pleine
     """
-    P[0] += 1
+    if EST_PLEINE(P):
+        raise IndexError("Pile pleine")
     P.append(e)
 
 
@@ -45,7 +48,6 @@ def DEPILER(P: list) -> object:
     """
     if EST_VIDE(P):
         raise IndexError("Pile vide")
-    P[0] -= 1
     return P.pop()
 
 
@@ -58,7 +60,18 @@ def EST_VIDE(P: list) -> bool:
     Returns:
         bool: True si la pile est vide, False sinon
     """
-    return P[0] <= 0
+    return len(P) == 0
+
+def EST_PLEINE(P: list) -> bool:
+    """Vérifie si la pile est pleine
+
+    Args:
+        P (list): La pile
+
+    Returns:
+        bool: True si la pile est pleine, False sinon
+    """
+    return len(P) == MAX
 
 
 #! Exemple d'utilisation

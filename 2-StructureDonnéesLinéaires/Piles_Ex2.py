@@ -17,7 +17,7 @@ def CREER_PILE_VIDE() -> list:
     Returns:
         list: Une pile vide de taille n
     """
-    return [0]*(n+1)
+    return [1]+[0]*(n)
 
 
 def EMPILER(P: list, e: object) -> None:
@@ -32,8 +32,8 @@ def EMPILER(P: list, e: object) -> None:
     """
     if EST_PLEINE(P):
         raise IndexError("Pile pleine")
-    P[0] += 1
     P[P[0]] = e
+    P[0] += 1
 
 
 def DEPILER(P: list) -> object:
@@ -50,8 +50,7 @@ def DEPILER(P: list) -> object:
     """
     if EST_VIDE(P):
         raise IndexError("Pile vide")
-    sommet = P[P[0]]
-    P[P[0]] = 0
+    sommet = P[P[0]-1]
     P[0] -= 1
     return sommet
 
@@ -65,7 +64,7 @@ def EST_VIDE(P: list) -> bool:
     Returns:
         bool: True si la pile est vide, False sinon
     """
-    return P[0] == 0
+    return P[0] == 1
 
 
 def EST_PLEINE(P: list) -> bool:
@@ -77,7 +76,7 @@ def EST_PLEINE(P: list) -> bool:
     Returns:
         bool: True si la pile est pleine, False sinon
     """
-    return P[0] == n
+    return P[0] == n+1
 
 
 #! Exemple d'utilisation
