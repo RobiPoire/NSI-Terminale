@@ -7,7 +7,7 @@ Les fonctions du type astrait file implémentées en Python
 __author__ = "RobiPoire"
 
 # La taille maximum de la file
-N = 4
+N = 7
 
 
 def creer_file_vide() -> list:
@@ -15,7 +15,8 @@ def creer_file_vide() -> list:
 
     Returns:
         list: Une file vide
-    """    
+    """
+    # On crée une file avec une tête, une queue, une taille et N cases pour les éléments
     return [3, 3, 0]+[0]*N
 
 
@@ -29,17 +30,15 @@ def enfiler(file: list, element: object):
     Raises:
         IndexError: Si la file est pleine
     """
-    if est_pleine(file):
-        raise IndexError("La file est pleine")
-    # Si la queue dépasse la taille du tableau, on la ramène au début du tableau en décalant la tête
-    if file[1] == N + 3:
-        file[0] = 3
-        file[1] = file[2]+3
-        for i in range(file[2]):
-            file[i+3] = file[i+4]
-    file[2] += 1
+    if est_pleine(file):  # Si la file est pleine, on ne peut rien enfiler
+        raise IndexError(
+            f"La file est pleine, impossible d'enfiler '{element}' (taille max: {N})")
+    # On ajoute l'élément à la queue de la file
     file[file[1]] = element
-    file[1] += 1
+    # On ajoute 1 à la taille de la file
+    file[2] += 1
+    # On ajoute 1 à l'indice de la tête sauf si la queue est à la fin de la file (on la remet à 3)
+    file[1] = 3 if file[1] == N+2 else file[1]+1
 
 
 def defiler(file: list) -> object:
@@ -54,14 +53,16 @@ def defiler(file: list) -> object:
     Returns:
         object: L'élément défilé
     """
-    if est_vide(file):
-        raise IndexError("La file est vide")
-    else:
-        element = file[file[0]]
-        file[file[0]] = 0
-        file[2] -= 1
-        file[0] += 1
-        return element
+    if est_vide(file):  # Si la file est vide, on ne peut rien défiler
+        raise IndexError("La file est vide, impossible de défiler un élément")
+    # On récupère l'élément à la tête de la file
+    element = file[file[0]]
+    # On retire 1 à la tête de la file sauf si la tête est à la fin de la file (on la remet à 3)
+    file[0] = 3 if file[0] == N+2 else file[0]+1
+    # On retire 1 à la taille de la file
+    file[2] -= 1
+    # On retourne l'élément défilé
+    return element
 
 
 def est_vide(file: list) -> bool:
@@ -73,7 +74,8 @@ def est_vide(file: list) -> bool:
     Returns:
         bool: True si la file est vide, False sinon
     """
-    return file[2] == 0
+    # On vérifie si la taille de la file est inférieur ou égale à 0
+    return file[2] <= 0
 
 
 def est_pleine(file: list) -> bool:
@@ -85,7 +87,8 @@ def est_pleine(file: list) -> bool:
     Returns:
         bool: True si la file est pleine, False sinon
     """
-    return file[2] == N
+    # On vérifie si la taille de la file est supérieur ou égale à N
+    return file[2] >= N
 
 
 # Exemple d'utilisation
@@ -95,35 +98,42 @@ if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
     file = creer_file_vide()
 
     # Enfiler des éléments
-    print(f"F = {file}")
+    print(f"file = {file}")
     enfiler(file, 21)
-    print(f"F = {file}")
+    print(f"file = {file}")
     enfiler(file, 22)
-    print(f"F = {file}")
+    print(f"file = {file}")
     enfiler(file, 23)
-    print(f"F = {file}")
+    print(f"file = {file}")
+    enfiler(file, 24)
+    print(f"file = {file}")
+    enfiler(file, 25)
+    print(f"file = {file}")
+    enfiler(file, 26)
+    print(f"file = {file}")
 
     # Défiler un élément
     element = defiler(file)
-    print(f"N = {element}")
-    print(f"F = {file}")
+    print(f"element = {element}")
+    print(f"file = {file}")
 
     # Enfiler des éléments
-    enfiler(file, 24)
-    print(f"F = {file}")
-    enfiler(file, 25)
-    print(f"F = {file}")
+    enfiler(file, 27)
+    print(f"file = {file}")
+    enfiler(file, 29)
+    print(f"file = {file}")
 
     # Défiler un élément
     element = defiler(file)
-    print(f"N = {element}")
-    print(f"F = {file}")
+    print(f"element = {element}")
+    print(f"file = {file}")
 
     # Enfiler un élément
     enfiler(file, 26)
-    print(f"F = {file}")
+    print(f"file = {file}")
 
-    # Défiler un élément
-    element = defiler(file)
-    print(f"N = {element}")
-    print(f"F = {file}")
+    # Défiler un élément x7
+    for i in range(7):
+        element = defiler(file)
+        print(f"element = {element}")
+        print(f"file = {file}")

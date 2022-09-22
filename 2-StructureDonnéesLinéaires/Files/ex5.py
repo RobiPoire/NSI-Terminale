@@ -8,8 +8,15 @@ Puis calcule le résultat de l'expression postfixée
 __author__ = "RobiPoire"
 
 from sys import path
-path.append("..")
+path.append("..") # Ajoute le dossier parent au path pour pouvoir importer les modules des autres exercices
 from Piles.ex5 import calcul
+from Piles.ex4 import sommet
+import Piles.ex2 as Pile
+import Files.ex3 as File
+
+# # Taille maximale des piles et files
+File.N = 50
+Pile.N = 50
 
 
 def conversion(expression: str) -> str:
@@ -21,27 +28,42 @@ def conversion(expression: str) -> str:
     Returns:
         str: L'expression postfixée
     """
-    file_expression = []
-    pile_operateurs = []
+    file_expression = File.creer_file_vide(
+    )  # On crée une file vide pour stocker l'expression postfixée
+    # On crée une pile vide pour stocker les opérateurs
+    pile_operateurs = Pile.creer_pile_vide()
+    # On prend chaque caractère de l'expression
     for caractere in expression:
+        # Si c'est un début de parenthèse, on l'empile
         if caractere == "(":
-            pile_operateurs.append(caractere)
+            Pile.empiler(pile_operateurs, caractere)  # On empile le caractère
         elif caractere == ")":
-            while pile_operateurs[-1] != "(":
-                file_expression.append(" ")
-                file_expression.append(pile_operateurs.pop())
-            pile_operateurs.pop()
-        elif caractere in "+-*/":
-            pile_operateurs.append(caractere)
-        else:
-            file_expression.append(caractere)
-    while pile_operateurs:
-        file_expression.append(" ")
-        file_expression.append(pile_operateurs.pop())
-    file_expression = "".join(file_expression)
-    if "  " in file_expression:
-        file_expression = file_expression.replace("  ", " ")
-    return file_expression
+            while sommet(pile_operateurs) != "(":
+                # On ajoute un espace pour séparer les éléments
+                File.enfiler(file_expression, " ")
+                # On dépile l'opérateur et on l'enfile
+                File.enfiler(file_expression, Pile.depiler(pile_operateurs))
+            Pile.depiler(pile_operateurs)  # On dépile la parenthèse
+        elif caractere in "+-*/":  # Si c'est un opérateur
+            Pile.empiler(pile_operateurs, caractere)  # On l'empile
+        else:  # Si c'est un nombre
+            File.enfiler(file_expression, caractere)  # On l'enfile
+    # Tant qu'il reste des opérateurs dans la pile
+    while not Pile.est_vide(pile_operateurs):
+        # On ajoute un espace pour séparer les éléments
+        File.enfiler(file_expression, " ")
+        # On dépile l'opérateur et on l'enfile
+        File.enfiler(file_expression, Pile.depiler(pile_operateurs))
+    # On crée une chaîne de caractères vide pour stocker l'expression postfixée
+    expression_postfixee = ""
+    # Tant qu'il reste des éléments dans la file
+    while not File.est_vide(file_expression):
+        # On défile l'élément et on l'ajoute à l'expression postfixée
+        expression_postfixee += File.defiler(file_expression)
+    # Si il y a des espaces doubles on les remplace par des espaces simples
+    if "  " in expression_postfixee:
+        expression_postfixee = expression_postfixee.replace("  ", " ")
+    return expression_postfixee  # On retourne l'expression postfixée
 
 
 # Exemple d'utilisation
