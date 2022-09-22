@@ -6,7 +6,7 @@ Les fonctions du type astrait pile implémentées en Python
 
 __author__ = "RobiPoire"
 
-# La taille maximum de la pile
+# Taille maximale des piles
 N = 4
 
 
@@ -29,10 +29,11 @@ def empiler(pile: list, element: object) -> None:
     Raises:
         IndexError: Si la pile est pleine
     """
-    if est_pleine(pile):
-        raise IndexError("Pile pleine")
-    pile[pile[0]] = element
-    pile[0] += 1
+    if est_pleine(pile):  # Si la pile est pleine, on ne peut pas empiler
+        raise IndexError(
+            f"La pile est pleine, impossible d'empiler '{element}' (taille max: {N})")
+    pile[pile[0]] = element  # On ajoute l'élément à la pile
+    pile[0] += 1  # On ajoute 1 à l'indice du sommet
 
 
 def depiler(pile: list) -> object:
@@ -47,11 +48,10 @@ def depiler(pile: list) -> object:
     Returns:
         object: L'élément dépiler
     """
-    if est_vide(pile):
-        raise IndexError("Pile vide")
-    sommet = pile[pile[0]-1]
-    pile[0] -= 1
-    return sommet
+    if est_vide(pile):  # Si la pile est vide, on ne peut rien dépiler
+        raise IndexError("La pile est vide, impossible de dépiler un élément")
+    pile[0] -= 1  # On enlève 1 à l'indice du sommet
+    return pile[pile[0]]  # On retourne l'élément à la tête de la pile
 
 
 def est_vide(pile: list) -> bool:
@@ -63,7 +63,7 @@ def est_vide(pile: list) -> bool:
     Returns:
         bool: True si la pile est vide, False sinon
     """
-    return pile[0] == 1
+    return pile[0] <= 1  # Si l'indice du sommet est inférieur ou égal à 1, la pile est vide
 
 
 def est_pleine(pile: list) -> bool:
@@ -75,36 +75,36 @@ def est_pleine(pile: list) -> bool:
     Returns:
         bool: True si la pile est pleine, False sinon
     """
-    return pile[0] == N+1
+    return pile[0] >= N+3  # Si l'indice du sommet est supérieur ou égal à N+3, la pile est pleine
 
 
 # Exemple d'utilisation
 if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
 
     # Création d'une pile vide
-    P = creer_pile_vide()
+    pile = creer_pile_vide()
 
     # Empiler des éléments
-    print(f"P= {P}")
-    empiler(P, 3)
-    print(f"P= {P}")
-    empiler(P, 2)
-    print(f"P= {P}")
+    print(f"pile = {pile}")
+    empiler(pile, 3)
+    print(f"pile = {pile}")
+    empiler(pile, 2)
+    print(f"pile = {pile}")
 
     # Dépiler un élément
-    N = depiler(P)
-    print(f"N= {N}")
-    print(f"P= {P}")
+    valeur = depiler(pile)
+    print(f"valeur = {valeur}")
+    print(f"pile = {pile}")
 
     # Empiler des éléments
-    empiler(P, 5)
-    print(f"P= {P}")
-    empiler(P, 7)
-    print(f"P= {P}")
-    empiler(P, 9)
-    print(f"P= {P}")
+    empiler(pile, 5)
+    print(f"pile = {pile}")
+    empiler(pile, 7)
+    print(f"pile = {pile}")
+    empiler(pile, 9)
+    print(f"pile = {pile}")
 
     # Dépiler un élément
-    N = depiler(P)
-    print(f"N= {N}")
-    print(f"P= {P}")
+    valeur = depiler(pile)
+    print(f"valeur = {valeur}")
+    print(f"pile = {pile}")

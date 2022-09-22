@@ -6,10 +6,14 @@ Calcule une expression arithmétique exprimée en NPI (notation polonaise invers
 
 __author__ = "RobiPoire"
 
-try :
-    from ex2 import *
-except ImportError: # Pour l'exercice 5 sur la partie sur les files
-    from .ex2 import *
+# On importe les fonctions sur les piles
+try:
+    import ex2 as Pile
+except ImportError:  # Pour pouvoir importer les fonctions pour l'exercice 5 sur les files
+    import Piles.ex2 as Pile
+
+# Taille maximale des piles
+Pile.N = 6
 
 
 def calcul(expression: str) -> float:
@@ -21,19 +25,24 @@ def calcul(expression: str) -> float:
     Returns:
         float: Le résultat du calcul
     """
-    pile = creer_pile_vide()
-    for element in expression.split():
+    pile = Pile.creer_pile_vide()  # On crée une pile vide
+    for element in expression.split():  # On parcourt chaque élément de l'expression
         if element == "+":
-            empiler(pile, depiler(pile) + depiler(pile))
+            Pile.empiler(pile, Pile.depiler(pile) +
+                         Pile.depiler(pile))  # x + y
         elif element == "-":
-            empiler(pile, - depiler(pile) + depiler(pile))
+            Pile.empiler(pile, - Pile.depiler(pile) +
+                         Pile.depiler(pile))  # x - y = - y + x
         elif element == "*":
-            empiler(pile, depiler(pile) * depiler(pile))
+            Pile.empiler(pile, Pile.depiler(pile) *
+                         Pile.depiler(pile))  # x * y
         elif element == "/":
-            empiler(pile, 1 / depiler(pile) * depiler(pile))
-        else:
-            empiler(pile, float(element))
-    return depiler(pile)
+            Pile.empiler(pile, 1 / Pile.depiler(pile) *
+                         Pile.depiler(pile))  # x / y = 1 / y * x
+        else:  # Si l'élément n'est pas un opérateur, on l'empile
+            Pile.empiler(pile, float(element))  # On empile l'élément
+    # On retourne le résultat du calcul arrondi à 4 décimales
+    return round(Pile.depiler(pile), 4)
 
 
 # Exemple d'utilisation
@@ -44,3 +53,6 @@ if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
 
     # Test 2 : 3*((4+5)-6) = 9
     print(calcul("3 4 5 + 6 - *"))
+
+    # Test 3 : 3*(4/5)-6 = -3.6
+    print(calcul("3 4 5 / * 6 -"))

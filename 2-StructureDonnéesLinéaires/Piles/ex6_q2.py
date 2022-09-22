@@ -1,6 +1,6 @@
 """
-Les piles - Exercice Bonus 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Les piles - Exercice 6 Question 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Implémenter en Python les opérations classiques sur les piles à l'aide d'un tableau que l'on
 "simulera" à l'aide d'une liste. On supposera que le tableau a une taille fixe, par exemple 10.
 """
@@ -8,11 +8,11 @@ Implémenter en Python les opérations classiques sur les piles à l'aide d'un t
 __author__ = "RobiPoire"
 
 
-import ex2 as Piles
+import ex2 as Pile
 
 
-# Taille de la pile maximale
-Piles.N = 6
+# Taille maximale des piles
+Pile.N = 6
 
 
 def hauteur_pile(pile: list) -> int:
@@ -24,20 +24,24 @@ def hauteur_pile(pile: list) -> int:
     Returns:
         int: La hauteur de la pile
     """
-    pile_temp = Piles.creer_pile_vide()
-    hauteur = 0
-    while not (Piles.est_vide(pile)):
+    pile_temp = Pile.creer_pile_vide()  # On crée une pile temporaire
+    hauteur = 0  # On initialise la hauteur à 0
+    while not (Pile.est_vide(pile)):  # Tant que la pile n'est pas vide
         hauteur += 1
-        element = Piles.depiler(pile)
-        Piles.empiler(pile_temp, element)
-    while not (Piles.est_vide(pile_temp)):
-        element = Piles.depiler(pile_temp)
-        Piles.empiler(pile, element)
+        # On dépile l'élément en le stockant dans une variable
+        element = Pile.depiler(pile)
+        # On ré-empile l'élément dans la pile temporaire
+        Pile.empiler(pile_temp, element)
+    # Tant que la pile temporaire n'est pas vide on ré-empile les éléments dans la pile de base
+    while not (Pile.est_vide(pile_temp)):
+        element = Pile.depiler(pile_temp)
+        Pile.empiler(pile, element)
+    # retourne la hauteur de la pile (sans modifier la pile de base)
     return hauteur
 
 
 def max_pile(pile: list, indice: int) -> int:
-    """Renvoie la position de l'élément le plus grand de la pile
+    """Renvoie la position de l'élément le plus grand de la pile jusqu'à l'indice
 
     Args:
         pile (list): La pile
@@ -54,19 +58,21 @@ def max_pile(pile: list, indice: int) -> int:
         raise IndexError("La pile n'a pas assez d'éléments")
     if indice < 1:
         raise IndexError("La position de départ doit être supérieur à 0")
-    pile_temp = Piles.creer_pile_vide()
+    pile_temp = Pile.creer_pile_vide()  # On crée une pile temporaire
     maximum = 0
     position = 0
-    for i in range(indice):
-        element = Piles.depiler(pile)
-        Piles.empiler(pile_temp, element)
+    for i in range(indice):  # On parcourt la pile jusqu'à l'indice
+        element = Pile.depiler(pile)  # On dépile l'élément
+        # On empile l'élément dans la pile temporaire
+        Pile.empiler(pile_temp, element)
         if element > maximum:
             maximum = element
             position = i + 1
-    while not (Piles.est_vide(pile_temp)):
-        element = Piles.depiler(pile_temp)
-        Piles.empiler(pile, element)
-    return position
+    # Tant que la pile temporaire n'est pas vide, on ré-empile les éléments dans la pile de base
+    while not (Pile.est_vide(pile_temp)):
+        element = Pile.depiler(pile_temp)
+        Pile.empiler(pile, element)
+    return position  # On retourne la position le plus grand de la pile jusqu'à l'indice
 
 
 def retourner(pile: list, j: int) -> None:
@@ -84,14 +90,18 @@ def retourner(pile: list, j: int) -> None:
         raise IndexError("La pile n'a pas assez d'éléments")
     if j < 1:
         raise IndexError("Il faut au moins 1 élément pour inverser")
-    pile_temp = Piles.creer_pile_vide()
-    pile_temp_2 = Piles.creer_pile_vide()
-    for i in range(j):
-        Piles.empiler(pile_temp, Piles.depiler(pile))
-    while not (Piles.est_vide(pile_temp)):
-        Piles.empiler(pile_temp_2, Piles.depiler(pile_temp))
-    while not (Piles.est_vide(pile_temp_2)):
-        Piles.empiler(pile, Piles.depiler(pile_temp_2))
+    pile_temp = Pile.creer_pile_vide()  # On crée une pile temporaire
+    pile_temp_2 = Pile.creer_pile_vide()  # On crée une deuxième pile temporaire
+    for i in range(j):  # On parcourt la pile jusqu'à j
+        # On dépile et on empile dans la pile temporaire
+        Pile.empiler(pile_temp, Pile.depiler(pile))
+    while not (Pile.est_vide(pile_temp)):  # Tant que la pile temporaire n'est pas vide
+        # On dépile et on empile dans la deuxième pile temporaire
+        Pile.empiler(pile_temp_2, Pile.depiler(pile_temp))
+    # Tant que la deuxième pile temporaire n'est pas vide
+    while not (Pile.est_vide(pile_temp_2)):
+        # On dépile et on empile dans la pile de base
+        Pile.empiler(pile, Pile.depiler(pile_temp_2))
 
 
 def tri_crepes(pile: list) -> None:
@@ -103,12 +113,15 @@ def tri_crepes(pile: list) -> None:
     Raises:
         IndexError: Si la pile est vide
     """
-    if hauteur_pile(pile) < 2:
+    if hauteur_pile(pile) < 2:  # Si la pile a moins de 2 éléments on ne peut pas trier
         raise IndexError("Il faut au moins 2 crépes pour trier")
-    hauteur = hauteur_pile(pile)
-    for i in range(hauteur):
+    hauteur = hauteur_pile(pile)  # On récupère la hauteur de la pile
+    for i in range(hauteur):  # On parcourt toute la pile
+        # On récupère la position de l'élément le plus grand
         position = max_pile(pile, hauteur-i)
+        # On retourne les éléments jusqu'à la position
         retourner(pile, position)
+        # On retourne les éléments jusqu'à la hauteur-i
         retourner(pile, hauteur-i)
 
 

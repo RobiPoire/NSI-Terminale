@@ -6,12 +6,18 @@ Vérifier si une expression est correctement parenthésée
 
 __author__ = "RobiPoire"
 
-# On importe les fonctions de l'exercice 2
-from ex2 import *
+# On importe les fonctions sur les piles
+try:
+    import ex2 as Pile
+except ImportError:  # Pour pouvoir importer les fonctions pour l'exercice 5 sur les files
+    import Piles.ex2 as Pile
+
+# Taille maximale des piles
+Pile.N = 6
 
 
 def sommet(pile: list) -> object:
-    """Retourne le sommet de la pile sans le dépiler
+    """Retourne le sommet de la pile sans la dépiler
 
     Args:
         pile (list): La pile
@@ -22,11 +28,12 @@ def sommet(pile: list) -> object:
     Returns:
         object: Le sommet de la pile
     """
-    if est_vide(pile):
-        raise IndexError("Pile vide")
-    sommet = depiler(pile)
-    empiler(pile, sommet)
-    return sommet
+    if Pile.est_vide(pile):  # Si la pile est vide, on ne peut pas retourner le sommet
+        raise IndexError("La pile est vide, impossible de dépiler un élément")
+    # On récupère le sommet de la pile en le dépillant
+    sommet = Pile.depiler(pile)
+    Pile.empiler(pile, sommet)  # On réempile le sommet de la pile
+    return sommet  # On retourne le sommet de la pile
 
 
 def est_bien_parenthesee(expression: str) -> bool:
@@ -38,25 +45,28 @@ def est_bien_parenthesee(expression: str) -> bool:
     Returns:
         bool: True si l'expression est correctement parenthésée, False sinon
     """
-    pile = creer_pile_vide()
+    pile = Pile.creer_pile_vide()
     for caractere in expression:
         if caractere == "(" or caractere == "[":
-            empiler(pile, caractere)
+            Pile.empiler(pile, caractere)
         elif caractere == ")" or caractere == "]":
-            # Si la pile est vide, on a plus de parenthèses ouvrantes que fermantes :
-            if est_vide(pile):
+            # Si la pile est vide, on a plus de parenthèses fermantes que ouvrantes :
+            if Pile.est_vide(pile):
                 return False
             # Si la parenthèse fermante ne correspond pas à la parenthèse ouvrante :
             else:
+                # Si la parenthèse ronde fermante correspond à la dernière parenthèse ronde ouvrante :
                 if caractere == ")" and sommet(pile) == "(":
-                    depiler(pile)
+                    Pile.depiler(pile)
+                # Si la parenthèse carré fermante correspond à la dernière parenthèse carré ouvrante :
                 elif caractere == "]" and sommet(pile) == "[":
-                    depiler(pile)
+                    Pile.depiler(pile)
+                # Sinon c'est que la parenthèse fermante ne correspond pas à la parenthèse ouvrante :
                 else:
                     return False
     # Si la pile est vide, on a forcement autant de parenthèses ouvrantes que fermantes
-    # sinon, on a plus de parenthèses ouvrantes que fermantes
-    return est_vide(pile)
+    # Sinon on a plus de parenthèses ouvrantes que fermantes
+    return Pile.est_vide(pile)
 
 
 # Exemple d'utilisation
