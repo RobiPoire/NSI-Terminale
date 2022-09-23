@@ -1,0 +1,2 @@
+ceci est un texte
+je dois lire le fichier txt
