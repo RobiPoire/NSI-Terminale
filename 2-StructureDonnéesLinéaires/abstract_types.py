@@ -21,8 +21,8 @@ class Lists:
         """
         if size < 1:
             raise ValueError("Size must be greater than 0")
-        self.size = size
-        self.list = [0] * (self.size + 1)
+        self.size = size # The size of the list
+        self.list = [0] * (self.size + 1) # The list wi
 
     def __str__(self) -> str:
         """Display the list
