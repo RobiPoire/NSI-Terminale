@@ -47,6 +47,7 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 
 ### Chapitres
 
+0. [TravauxAméliorés](https://github.com/RobiPoire/NSI-Terminale/blob/7fe2ae8ec352671b449cab58c0364668bce8512e/0-TravauxAmélioré)
 1. [Révisions](https://github.com/RobiPoire/NSI-Terminale/blob/2417f87e0ebddfb62cfe6e05fa9d4c79e916fb1e/1-Revisions)
 2. [StructureDonnéesLinéaires](https://github.com/RobiPoire/NSI-Terminale/blob/2417f87e0ebddfb62cfe6e05fa9d4c79e916fb1e/2-StructureDonnéesLinéaires) <br>
    a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/7bb2836d369a10ac96ad18984a51efe801a9319b/2-StructureDonnéesLinéaires/Listes) <br>
