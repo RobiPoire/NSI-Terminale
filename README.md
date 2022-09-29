@@ -92,3 +92,5 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 [commits-url]: https://github.com/RobiPoire/NSI-Terminale/commits/main
 [size-shield]: https://img.shields.io/github/repo-size/RobiPoire/NSI-Terminale?style=for-the-badge
 [size-url]: https://github.com/RobiPoire/NSI-Terminale
+
+https://github.com/codespaces/new?machine=standardLinux32gb&repo=533007467&ref=main&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope
