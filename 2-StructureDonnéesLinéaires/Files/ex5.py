@@ -46,7 +46,7 @@ def conversion(expression: str) -> str:
             Pile.depiler(pile_operateurs)  # On dépile la parenthèse
         elif caractere in "+-*/":  # Si c'est un opérateur
             Pile.empiler(pile_operateurs, caractere)  # On l'empile
-        else:  # Si c'est un nombre
+        else:  # Si c'est un nombre ou un espace
             File.enfiler(file_expression, caractere)  # On l'enfile
     # Tant qu'il reste des opérateurs dans la pile
     while not Pile.est_vide(pile_operateurs):
@@ -70,7 +70,7 @@ def conversion(expression: str) -> str:
 if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
 
     # L'expression infixée à convertir
-    expression = "7 * (((13 + 22) - 15) / 5)"
+    expression = "7 * ((13 + 22 - 15) / 5)"
 
     # Conversion de l'expression infixée en une expression postfixée
     expression_postfixee = conversion(expression)
