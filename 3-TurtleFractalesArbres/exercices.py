@@ -9,9 +9,23 @@ __author__ = "HabibLebsir, devnationfrance, RobiPoire"
 from turtle import *
 from math import *
 
+
 # Partie A
 
+# A.4.1
+def carre(longueur: int) -> None:
+    """Dessine un carré de la longueur donnée
 
+    Args:
+        longueur (int): la longueur des côtés du carré
+    """
+    for i in range(4):
+        forward(longueur)
+        left(90)
+    # TODO: Rajouter les diagonales du carré
+
+
+# A.4.2
 def triangle(longueur: int) -> None:
     """Dessine un triangle de la longueur donnée
 
@@ -23,31 +37,7 @@ def triangle(longueur: int) -> None:
         left(120)
 
 
-def carre(longueur: int) -> None:
-    """Dessine un carré de la longueur donnée
-
-    Args:
-        longueur (int): la longueur des côtés du carré
-    """
-    for i in range(4):
-        forward(longueur)
-        left(90)
-
-
-def rectangle(longueur: int, height: int) -> None:
-    """Dessine un rectangle de la longueur donnée
-
-    Args:
-        longueur (int): la longueur des côtés du rectangle
-        height (int): la hauteur du rectangle
-    """
-    for i in range(2):
-        forward(longueur)
-        left(90)
-        forward(height)
-        left(90)
-
-
+# A.4.3
 def figure_triangle(longueur: int) -> None:
     """Dessine un triangle de la longueur donnée
 
@@ -59,6 +49,7 @@ def figure_triangle(longueur: int) -> None:
         left(120)
 
 
+# A.4.3
 def triforce(longueur: int) -> None:
     """Dessine une triforce de la longueur donnée
 
@@ -73,6 +64,7 @@ def triforce(longueur: int) -> None:
     triangle(longueur)
 
 
+# A.4.4 a
 def triangle_rectangle(longueur: int) -> None:
     """Dessine un triangle rectangle de la longueur donnée
 
@@ -87,7 +79,8 @@ def triangle_rectangle(longueur: int) -> None:
     left(135)
 
 
-def trirect(longueur: int, repetitions: int) -> None:
+# A.4.4 b
+def figure_triangles_rectangle(longueur: int, repetitions: int) -> None:
     """Dessine un triangle rectangle de la longueur donnée
 
     Args:
@@ -98,19 +91,9 @@ def trirect(longueur: int, repetitions: int) -> None:
         triangle_rectangle(longueur*i)
 
 
-def etoile(longueur: int) -> None:
-    """Dessine une étoile de la longueur donnée
-
-    Args:
-        longueur (int): la longueur des côtés de l'étoile
-    """
-    for i in range(5):  # Une étoile à 5 branches
-        forward(longueur)
-        right(144)
-
 # Partie B
 
-
+# B.2
 def trace(chaine: str, longueur: int, angle: int) -> None:
     """Trace une figure
 
@@ -127,9 +110,10 @@ def trace(chaine: str, longueur: int, angle: int) -> None:
         elif i == "-":
             right(angle)
 
+
 # Partie C
 
-
+# C.2
 def deplacement(s: str, motif: str, repetitions: int) -> str:
     """ Crée une nouvelle chaîne de caractères en appliquant le motif à la chaîne s
 
@@ -146,6 +130,7 @@ def deplacement(s: str, motif: str, repetitions: int) -> str:
     return s
 
 
+# C.3
 def flocon_koch(longueur: int, repetitions: int) -> None:
     """Dessine un flocon de Koch
 
@@ -158,6 +143,7 @@ def flocon_koch(longueur: int, repetitions: int) -> None:
     trace(chaines, longueur, 60)
 
 
+# C.4
 def courbe_quadratique_Koch_type_deux(longueur: int, repetitions: int) -> None:
     """Dessine une courbe quadratique de Koch
 
@@ -191,3 +177,114 @@ def triangle_sierpinsky(longueur: int, repetitions: int) -> None:
         forward(longueur*(2**repetitions)*2)
     left(120)
     forward(longueur*(2**repetitions))
+
+# Partie E
+
+# E.1 a
+
+
+def empiler(pile: list) -> None:
+    """Empile une figure
+
+    Args:
+        pile (list): La pile de figures
+    """
+    pile.append([heading(), position()])
+
+
+# E.1 a
+def depiler(pile: list) -> None:
+    """Dépile une figure
+
+    Args:
+        pile (list): La pile de figures
+    """
+    penup()
+    angle, coordonnees = pile.pop()
+    goto(coordonnees)
+    setheading(angle)
+    pendown()
+
+
+# E.1 b
+def trace2(chaine: str, longueur: int, angle: int) -> None:
+    """Trace une figure en utilisant la pile
+
+    Args:
+        chaine (str): La chaîne de caractères à suivre
+        longueur (int): La longueur des figures
+        angle (int): L'angle des figures
+    """
+    pile = []
+    for i in chaine:
+        if i == "A":
+            forward(longueur)
+        elif i == "+":
+            left(angle)
+        elif i == "-":
+            right(angle)
+        elif i == "[":
+            empiler(pile)
+        elif i == "]":
+            depiler(pile)
+
+
+# E.1 c
+def arbre_simple(longueur: int, repetitions: int) -> None:
+    """Dessine un arbre simple
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    chaines = "A"
+    chaines = deplacement(chaines, "A[+A][-A]", repetitions)
+    trace2(chaines, longueur, 30)
+
+
+# E.2
+def plante_longiligne(longueur: int, repetitions: int) -> None:
+    """Dessine une plante longiligne
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    left(90)
+    chaines = "A"
+    chaines = deplacement(chaines, "A[+A]A[-A]A", repetitions)
+    trace2(chaines, longueur, 25)
+
+# E.3
+
+
+def buisson_type_aneth(longueur: int, repetitions: int) -> None:
+    """Dessine un buisson type aneth
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    left(90)
+    chaines = "A"
+    chaines = deplacement(chaines, "AA+[+A-A-A]-[-A+A+A]", repetitions)
+    trace2(chaines, longueur, 20)
+
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    speed(0)  # On met la vitesse de la tortue au maximum
+   # carre(10)
+   # triangle(10)
+   # figure_triangle(10)
+   # triangle_rectangle(10)
+   # figure_triangles_rectangle(10, 4)
+   # trace("A--A--A", 10, 60)
+   # deplacement("A--A--A", "A+A--A+A", 2)
+   # flocon_koch(5, 3)
+   # courbe_quadratique_Koch_type_deux(5, 3)
+   # triangle_sierpinsky(5, 3)
+   # arbre_simple(5, 4)
+   # plante_longiligne(5, 4)
+   # buisson_type_aneth(5, 4)
+    mainloop()  # Pour eviter des bugs avec turtle
