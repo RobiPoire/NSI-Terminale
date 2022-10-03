@@ -107,3 +107,64 @@ def etoile(longueur: int) -> None:
     for i in range(5):  # Une étoile à 5 branches
         forward(longueur)
         right(144)
+
+# Partie B
+
+
+def trace(chaine: str, longueur: int, angle: int) -> None:
+    """Trace une figure
+
+    Args:
+        chaine (str): Les chaines à suivre
+        longueur (int): La longueur des figures
+        angle (int): L'angle des figures
+    """
+    for i in chaine:
+        if i == "A":
+            forward(longueur)
+        elif i == "+":
+            left(angle)
+        elif i == "-":
+            right(angle)
+
+# Partie C
+
+
+def deplacement(s: str, motif: str, repetitions: int) -> str:
+    """ Crée une nouvelle chaîne de caractères en appliquant le motif à la chaîne s
+
+    Args:
+        s (str): La chaîne de caractères à modifier
+        motif (str): Le motif à appliquer
+        repetitions (int): Le nombre de répétitions
+
+    Returns:
+        str: La nouvelle chaîne de caractères
+    """
+    for i in range(repetitions):
+        s = s.replace("A", motif)
+    return s
+
+
+def flocon_koch(longueur: int, repetitions: int) -> None:
+    """Dessine un flocon de Koch
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    chaines = "A--A--A"
+    chaines = deplacement(chaines, "A+A--A+A", repetitions)
+    trace(chaines, longueur, 60)
+
+
+def courbe_quadratique_Koch_type_deux(longueur: int, repetitions: int) -> None:
+    """Dessine une courbe quadratique de Koch
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    chaines = "A+A+A+A"
+    chaines = deplacement(chaines, "A-A+A+AA-A-A+A", repetitions)
+    trace(chaines, longueur, 90)
