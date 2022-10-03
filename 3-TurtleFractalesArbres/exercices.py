@@ -168,3 +168,26 @@ def courbe_quadratique_Koch_type_deux(longueur: int, repetitions: int) -> None:
     chaines = "A+A+A+A"
     chaines = deplacement(chaines, "A-A+A+AA-A-A+A", repetitions)
     trace(chaines, longueur, 90)
+
+# Partie D
+
+
+def triangle_sierpinsky(longueur: int, repetitions: int) -> None:
+    """Dessine un triangle de Sierpinsky
+
+    Args:
+        longueur (int): La longueur du triangle
+        repetitions (int): Le nombre de répétitions
+    """
+    left(180)  # On tourne la tortue pour que le triangle soit orienté vers le haut
+    chaines = "A--A--A"
+    chaines = deplacement(chaines, "A-A+A+A-A", repetitions)
+    trace(chaines, longueur, 120)
+    # On trace le grand triangle autour :
+    left(60)
+    forward(longueur*(2**repetitions))
+    for i in range(2):
+        left(120)
+        forward(longueur*(2**repetitions)*2)
+    left(120)
+    forward(longueur*(2**repetitions))
