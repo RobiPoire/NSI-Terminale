@@ -37,7 +37,7 @@ class TestLists(unittest.TestCase):
         list.delete(1)
         self.assertEqual(list.list, [2, "World", "!", 0, 0, 0])
         list.delete(2)
-        self.assertEqual(list.list, [1, 'World', 0, 0, 0, 0])
+        self.assertEqual(list.list, [1, "World", 0, 0, 0, 0])
         list.delete(1)
         self.assertEqual(list.list, [0, 0, 0, 0, 0, 0])
 
@@ -72,9 +72,7 @@ class TestLists(unittest.TestCase):
         self.assertEqual(list.search("Hello"), 1)
         self.assertEqual(list.search("World"), 2)
         self.assertEqual(list.search("!"), 3)
-        # Si l'élément n'est pas dans la liste retourne bien une erreur
-        with self.assertRaises(ValueError):
-            list.search("Test")
+        self.assertEqual(list.search("Test"), None)
 
 
 class TestStacks(unittest.TestCase):
@@ -85,49 +83,49 @@ class TestStacks(unittest.TestCase):
         self.assertEqual(stack.size, 5)
         self.assertEqual(stack.stack, [1, 0, 0, 0, 0, 0])
 
-    def test_stack_add(self):
+    def test_stack_push(self):
         """Test the addition of an element in a stack"""
         stack = Stacks(5)
-        stack.add("Hello")
+        stack.push("Hello")
         self.assertEqual(stack.stack, [2, "Hello", 0, 0, 0, 0])
-        stack.add("World")
+        stack.push("World")
         self.assertEqual(stack.stack, [3, "Hello", "World", 0, 0, 0])
-        stack.add("!")
+        stack.push("!")
         self.assertEqual(stack.stack, [4, "Hello", "World", "!", 0, 0])
 
-    def test_stack_retrieve(self):
+    def test_stack_pop(self):
         """Test the retrieval of an element in a stack"""
         stack = Stacks(5)
-        stack.add("Hello")
-        stack.add("World")
-        stack.add("!")
-        stack.retrieve()
-        self.assertEqual(stack.stack, [3, 'Hello', 'World', '!', 0, 0])
-        stack.retrieve()
-        self.assertEqual(stack.stack, [2, 'Hello', 'World', '!', 0, 0])
-        stack.retrieve()
-        self.assertEqual(stack.stack, [1, 'Hello', 'World', '!', 0, 0])
+        stack.push("Hello")
+        stack.push("World")
+        stack.push("!")
+        stack.pop()
+        self.assertEqual(stack.stack, [3, "Hello", "World", "!", 0, 0])
+        stack.pop()
+        self.assertEqual(stack.stack, [2, "Hello", "World", "!", 0, 0])
+        stack.pop()
+        self.assertEqual(stack.stack, [1, "Hello", "World", "!", 0, 0])
 
     def test_stack_full(self):
         """Test the fullness of a stack"""
         stack = Stacks(5)
         self.assertEqual(stack.is_full(), False)
-        stack.add("Hello")
-        stack.add("World")
-        stack.add("!")
-        stack.add("Hello")
-        stack.add("World")
+        stack.push("Hello")
+        stack.push("World")
+        stack.push("!")
+        stack.push("Hello")
+        stack.push("World")
         self.assertEqual(stack.is_full(), True)
 
     def test_stack_empty(self):
         """Test the emptiness of a stack"""
         stack = Stacks(5)
         self.assertEqual(stack.is_empty(), True)
-        stack.add("Hello")
-        stack.add("World")
-        stack.add("!")
-        stack.add("Hello")
-        stack.add("World")
+        stack.push("Hello")
+        stack.push("World")
+        stack.push("!")
+        stack.push("Hello")
+        stack.push("World")
         self.assertEqual(stack.is_empty(), False)
 
 
@@ -139,51 +137,139 @@ class TestQueues(unittest.TestCase):
         self.assertEqual(queue.size, 5)
         self.assertEqual(queue.queue, [3, 3, 0, 0, 0, 0, 0, 0])
 
-    def test_queue_put(self):
+    def test_queue_enqueue(self):
         """Test the addition of an element in a queue"""
         queue = Queues(5)
-        queue.put("Hello")
+        queue.enqueue("Hello")
         self.assertEqual(queue.queue, [3, 4, 1, "Hello", 0, 0, 0, 0])
-        queue.put("World")
+        queue.enqueue("World")
         self.assertEqual(queue.queue, [3, 5, 2, "Hello", "World", 0, 0, 0])
-        queue.put("!")
+        queue.enqueue("!")
         self.assertEqual(queue.queue, [3, 6, 3, "Hello", "World", "!", 0, 0])
 
-    def test_queue_get(self):
+    def test_queue_dequeue(self):
         """Test the retrieval of an element in a queue"""
         queue = Queues(5)
-        queue.put("Hello")
-        queue.put("World")
-        queue.put("!")
-        queue.get()
-        self.assertEqual(queue.queue, [4, 6, 2, 'Hello', 'World', '!', 0, 0])
-        queue.get()
-        self.assertEqual(queue.queue, [5, 6, 1, 'Hello', 'World', '!', 0, 0])
-        queue.get()
-        self.assertEqual(queue.queue, [6, 6, 0, 'Hello', 'World', '!', 0, 0])
+        queue.enqueue("Hello")
+        queue.enqueue("World")
+        queue.enqueue("!")
+        queue.dequeue()
+        self.assertEqual(queue.queue, [4, 6, 2, "Hello", "World", "!", 0, 0])
+        queue.dequeue()
+        self.assertEqual(queue.queue, [5, 6, 1, "Hello", "World", "!", 0, 0])
+        queue.dequeue()
+        self.assertEqual(queue.queue, [6, 6, 0, "Hello", "World", "!", 0, 0])
 
     def test_queue_full(self):
         """Test the fullness of a queue"""
         queue = Queues(5)
         self.assertEqual(queue.is_full(), False)
-        queue.put("Hello")
-        queue.put("World")
-        queue.put("!")
-        queue.put("Hello")
-        queue.put("World")
+        queue.enqueue("Hello")
+        queue.enqueue("World")
+        queue.enqueue("!")
+        queue.enqueue("Hello")
+        queue.enqueue("World")
         self.assertEqual(queue.is_full(), True)
 
     def test_queue_empty(self):
         """Test the emptiness of a queue"""
         queue = Queues(5)
         self.assertEqual(queue.is_empty(), True)
-        queue.put("Hello")
-        queue.put("World")
-        queue.put("!")
-        queue.put("Hello")
-        queue.put("World")
+        queue.enqueue("Hello")
+        queue.enqueue("World")
+        queue.enqueue("!")
+        queue.enqueue("Hello")
+        queue.enqueue("World")
         self.assertEqual(queue.is_empty(), False)
 
 
-if __name__ == '__main__':
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+class TestDictionaries(unittest.TestCase):
+
+    def test_dictionary_creation(self):
+        """Test the creation of a dictionary"""
+        dictionary = Dictionaries(5)
+        self.assertEqual(dictionary.size, 5)
+        self.assertEqual(dictionary.dictionary,
+                         ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
+
+    def test_dictionary_insert(self):
+        """Test the insertion of an element in a dictionary"""
+        dictionary = Dictionaries(5)
+        dictionary.insert("Hello", 1)
+        self.assertEqual(dictionary.dictionary,
+                         (["Hello", 0, 0, 0, 0], [1, 0, 0, 0, 0]))
+        dictionary.insert("World", 2)
+        self.assertEqual(dictionary.dictionary,
+                         (["Hello", "World", 0, 0, 0], [1, 2, 0, 0, 0]))
+        dictionary.insert("!", 3)
+        self.assertEqual(dictionary.dictionary,
+                         (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0]))
+
+    def test_dictionary_delete(self):
+        """Test the deletion of an element in a dictionary"""
+        dictionary = Dictionaries(5)
+        dictionary.insert("Hello", 1)
+        dictionary.insert("World", 2)
+        dictionary.insert("!", 3)
+        dictionary.delete("Hello")
+        self.assertEqual(dictionary.dictionary,
+                         ([0, "World", 0, "!", 0], [0, 2, 0, 3, 0]))
+        dictionary.delete("!")
+        self.assertEqual(dictionary.dictionary,
+                         ([0, "World", 0, 0, 0], [0, 2, 0, 0, 0]))
+        dictionary.delete("World")
+        self.assertEqual(dictionary.dictionary,
+                         ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
+
+    def test_dictionary_full(self):
+        """Test the fullness of a dictionary"""
+        dictionary = Dictionaries(5)
+        self.assertEqual(dictionary.is_full(), False)
+        dictionary.insert("Hello", 1)
+        dictionary.insert("World", 2)
+        dictionary.insert("!", 3)
+        dictionary.insert("Hello", 4)
+        dictionary.insert("World", 5)
+        self.assertEqual(dictionary.is_full(), True)
+
+    def test_dictionary_empty(self):
+        """Test the emptiness of a dictionary"""
+        dictionary = Dictionaries(5)
+        self.assertEqual(dictionary.is_empty(), True)
+        dictionary.insert("Hello", 1)
+        dictionary.insert("World", 2)
+        dictionary.insert("!", 3)
+        dictionary.insert("Hello", 4)
+        dictionary.insert("World", 5)
+        self.assertEqual(dictionary.is_empty(), False)
+
+    def test_dictionary_research(self):
+        """Test the search of an element in a dictionary"""
+        dictionary = Dictionaries(5)
+        dictionary.insert("Hello", 1)
+        dictionary.insert("World", 2)
+        dictionary.insert("!", 3)
+        self.assertEqual(dictionary.research(1), "Hello")
+        self.assertEqual(dictionary.research(2), "World")
+        self.assertEqual(dictionary.research(3), "!")
+        self.assertEqual(dictionary.research(4), None)
+
+    def test_dictionary_edit(self):
+        """Test the edit of an element in a dictionary"""
+        dictionary = Dictionaries(5)
+        dictionary.insert("Hello", 1)
+        dictionary.insert("World", 2)
+        dictionary.insert("!", 3)
+        self.assertEqual(dictionary.dictionary,
+                         (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0]))
+        dictionary.edit("Hello", 11)
+        self.assertEqual(dictionary.dictionary, (["Hello", "World", 0, "!", 0], [11, 2, 0, 3, 0]))
+        print(dictionary.dictionary)
+        dictionary.edit("World", 22)
+        self.assertEqual(dictionary.dictionary, (['Hello', 'World', 0, '!', 0], [11, 22, 0, 3, 0]))
+        with self.assertRaises(ValueError):
+            dictionary.edit("Goodbye", 1)
+
+
+if __name__ == "__main__":
+    unittest.main(argv=["first-arg-is-ignored"], exit=False)
