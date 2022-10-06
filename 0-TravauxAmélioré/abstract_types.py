@@ -1,7 +1,7 @@
 """
 The abstract types
 ~~~~~~~~~~~~~~~~~~~
-Functions of abstract linear data types of lists, stacks and queues implemented in Python
+Functions of abstract linear data types of lists, stacks, queues and dictionaries implemented in Python
 """
 
 __author__ = "HabibLebsir, devnatiofrance and RobiPoire"
@@ -11,7 +11,7 @@ class Lists:
     """The abstract type of lists"""
 
     def __init__(self, size: int) -> None:
-        """Create a list with the chosen size
+        """Constructor of the class Lists
 
         Args:
             size (int): The size of the list
@@ -25,12 +25,13 @@ class Lists:
         self.list = [0] * (self.size + 1)  # The list wi
 
     def __str__(self) -> str:
-        """Display the list
+        """Summary of the list
 
         Returns:
-            str: The list
+            str: The summary of the list
         """
-        return f"{self.list}"
+        output = f"Length/Size: {self.list[0]}/{self.size}\nList: {self.list[1:]}"
+        return output
 
     def insert(self, element: object, index: int) -> None:
         """Insert an element at the chosen index
@@ -71,22 +72,19 @@ class Lists:
         for i in range(index + 1, self.size + 1):
             self.list[i-1] = self.list[i]  # Shift the elements to the left
 
-    def search(self, element: object) -> int:
+    def search(self, element: object) -> int | None:
         """Search an element in the list
 
         Args:
             element (object): The element to search
 
-        Raises:
-            ValueError: If the element is not in the list
-
         Returns:
-            int: The index of the element
+            int|None: The index of the element if found, None otherwise
         """
-        for position in range(1, self.length()+1):
+        for position in range(1, self.list[0]+1):
             if self.list[position] == element:  # If the element is found, return the index
                 return position
-        raise ValueError(f"{element} is not in the list")
+        return None
 
     def read(self, index: int) -> object:
         """Read an element at the chosen index
@@ -120,21 +118,13 @@ class Lists:
                 "Index 0 is reserved for the length of the list")
         self.list[index] = element  # Change the element at the chosen index
 
-    def length(self) -> int:
-        """Length of the list
-
-        Returns:
-            int: The length of the list
-        """
-        return self.list[0]
-
     def is_empty(self) -> bool:
         """Is the list empty
 
         Returns:
             bool: True if the list is empty, False otherwise
         """
-        return self.length() == 0
+        return self.list[0] == 0
 
     def is_full(self) -> bool:
         """Is the list full
@@ -169,9 +159,10 @@ class Stacks:
         Returns:
             str: The stack
         """
-        return f"{self.stack}"
+        output = f"Lenght/Size: {self.stack[0]-1}/{self.size}\nLast element index: {self.stack[1]}\nStack: {self.stack[2:]}"
+        return output
 
-    def add(self, element: object) -> None:
+    def push(self, element: object) -> None:
         """Add an element to the stack
 
         Args:
@@ -186,7 +177,7 @@ class Stacks:
         self.stack[self.stack[0]] = element  # Add the element to the stack
         self.stack[0] += 1
 
-    def retrieve(self) -> int:
+    def pop(self) -> int:
         """Retrieve the last element of the stack
 
         Raises:
@@ -239,10 +230,14 @@ class Queues:
         Returns:
             str: The queue
         """
-        return f"{self.queue}"
+        output = f"Firt element index: {self.queue[0]}\n \
+                    Last element index: {self.queue[1]}\n \
+                    Length/Size: {self.queue[2]}/{self.size}\n \
+                    Queue: {self.queue[3:]}"
+        return output
 
-    def put(self, element: object) -> None:
-        """Put an element in the queue
+    def enqueue(self, element: object) -> None:
+        """Add an element to the queue
 
         Args:
             element (object): The element to put
@@ -258,8 +253,8 @@ class Queues:
         # Increase the first element of the queue or reset it to 3 if it's the last index of the queue
         self.queue[1] = 3 if self.queue[1] == self.size+2 else self.queue[1]+1
 
-    def get(self) -> object:
-        """Get an element from the queue
+    def dequeue(self) -> object:
+        """Retrieve the first element of the queue
 
         Raises:
             IndexError: If the queue is empty
@@ -291,3 +286,163 @@ class Queues:
             bool: True if the queue is full, False otherwise
         """
         return self.queue[2] == self.size
+
+
+class Dictionaries:
+    """The abstract type of dictionaries"""
+
+    def __init__(self, size: int) -> None:
+        """Create a dictionary with the chosen size
+
+        Args:
+            size (int): The size of the dictionary
+        """
+        self.size = size
+        self.dictionary = ([0] * self.size, [0] * self.size)
+
+    def __str__(self) -> str:
+        """Display the summary of the dictionary
+
+        Returns:
+            str: The summary of the dictionary
+        """
+        output = f"Size:{self.size}\nKeys: {self.dictionary[0]}\nValues: {self.dictionary[1]}"
+        return output
+
+    def __hash(self, key: object) -> int:
+        """Hash the key to get the index of the value
+
+        Args:
+            key (object): The key to hash
+
+        Returns:
+            int: The index of the value
+        """
+        hash_sum = 0
+        for i in key:
+            hash_sum += ord(i)
+        return hash_sum % self.size
+
+    def insert(self, key: object, value: object) -> None:
+        """Insert a key and a value in the dictionary
+
+        Args:
+            key (object): The key to insert
+            value (object): The value to insert
+
+        Raises:
+            IndexError: If the dictionary is full
+        """
+        keys, values = self.dictionary
+        if self.is_full():
+            raise IndexError(
+                f"Dictionary is full, can't add {key}, max size is {self.size}")
+        if keys[self.__hash(key)] == 0:
+            keys[self.__hash(key)] = key
+            values[self.__hash(key)] = value
+        else:
+            for i in range(self.size):
+                if keys[i] == 0:
+                    keys[i] = key
+                    values[i] = value
+                    break
+
+    def delete(self, key: object) -> None:
+        """Delete a key and a value from the dictionary
+
+        Args:
+            key (object): The key to delete
+
+        Raises:
+            IndexError: If the dictionary is empty
+            IndexError: If the key doesn't exist
+        """
+        keys, values = self.dictionary
+        if self.is_empty():
+            raise IndexError(f"Dictionary is empty, can't delete {key}")
+        if keys[self.__hash(key)] == key:
+            keys[self.__hash(key)] = 0
+            values[self.__hash(key)] = 0
+        else:
+            for i in range(self.size):
+                if keys[i] == key:
+                    keys[i] = 0
+                    values[i] = 0
+                    return None
+            raise IndexError(f"Dictionary doesn't contain {key}")
+
+    def read(self, key: object) -> object:
+        """Read a value from the dictionary
+
+        Args:
+            key (object): The key to read
+
+        Returns:
+            object: The value from the dictionary
+        """
+        keys, values = self.dictionary
+        if keys[self.__hash(key)] == key:
+            return values[self.__hash(key)]
+        else:
+            for i in range(self.size):
+                if keys[i] == key:
+                    return values[i]
+
+    def research(self, value: object) -> object | None:
+        """Research a key from the dictionary
+
+        Args:
+            value (object): The value to research
+
+        Returns:
+            object|None: The key from the dictionary or None if the value doesn't exist
+        """
+        keys, values = self.dictionary
+        for i in range(self.size):
+            if values[i] == value:
+                return keys[i]
+        return None  # If the value is not in the dictionary
+
+    def edit(self, key: object, value: object) -> None:
+        """Edit a value in the dictionary
+
+        Args:
+            key (object): The key to edit
+            value (object): The new value
+
+        Raises:
+            IndexError: If the key doesn't exist
+        """
+        keys, values = self.dictionary
+        if keys[self.__hash(key)] == key:
+            values[self.__hash(key)] = value
+        else:
+            for i in range(self.size):
+                if keys[i] == key:
+                    values[i] = value
+                    break
+            raise IndexError(f"Dictionary doesn't contain {key}")
+
+    def is_empty(self) -> bool:
+        """Is the dictionary empty
+
+        Returns:
+            bool: True if the dictionary is empty, False otherwise
+        """
+        keys = self.dictionary[0]
+        for key in keys:
+            if key != 0:
+                return False
+        return True
+
+    def is_full(self) -> bool:
+        """Is the dictionary full
+
+        Returns:
+            bool: True if the dictionary is full, False otherwise
+        """
+        keys = self.dictionary[0]
+        for key in keys:
+            if key == 0:
+                return False
+        return True
