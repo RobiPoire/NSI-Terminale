@@ -5,18 +5,17 @@ Les fonctions du type astrait dictionnaire implémentées en Python
 (avec la gestion des collisions avec la méthode du chainage linéaire)
 """
 
-__auhtor__ = "RobiPoire, HabibLebsir, LukasGontard"
+__auhtor__ = "RobiPoire"
 
 
 N = 25
 
 
 def creer_dictionnaire() -> tuple:
-    """
-    Il crée un tuple de deux listes, chacune de longueur N, et renvoie le tuple
-    
+    """Crée un dictionnaire vide de taille N
+
     Returns:
-      Un tuple de deux listes.
+        tuple: le dictionnaire
     """
     valeurs = [0] * N
     cles = [0] * N
@@ -24,15 +23,13 @@ def creer_dictionnaire() -> tuple:
 
 
 def hachage(cle: str) -> int:
-    """
-    Il additionne les valeurs ASCII des caractères de la chaîne et renvoie le reste de la division de
-    cette somme par la taille de la table
-    
+    """Hachage d'une clé en un entier entre 0 et N-1
+
     Args:
-      cle (str): chaîne
-    
+        cle (str): la clé à hacher
+
     Returns:
-      Somme des valeurs ordinales des caractères de la chaîne modulo N.
+        int: la clé hachée
     """
     somme = 0
     for i in cle:
@@ -41,14 +38,13 @@ def hachage(cle: str) -> int:
 
 
 def est_vide(dictionnaire: tuple) -> bool:
-    """
-    Il renvoie True si le dictionnaire est vide, et False sinon
-    
+    """ Vérifie si un dictionnaire est vide
+
     Args:
-      dictionnaire (tuple): tuple
-    
+        dictionnaire (tuple): le dictionnaire
+
     Returns:
-      une valeur booléenne.
+        bool: True si vide, False sinon
     """
     cles = dictionnaire[0]
     for i in range(N):
@@ -58,14 +54,13 @@ def est_vide(dictionnaire: tuple) -> bool:
 
 
 def est_plein(dictionnaire: tuple) -> bool:
-    """
-    Elle renvoie True si toutes les clés du dictionnaire sont différentes de zéro, et False sinon.
-    
+    """ Vérifie si un dictionnaire est plein
+
     Args:
-      dictionnaire (tuple): tuple
-    
+        dictionnaire (tuple): le dictionnaire
+
     Returns:
-      Un tuple de deux listes.
+        bool: True si plein, False sinon
     """
     cles = dictionnaire[0]
     for i in range(N):
@@ -75,13 +70,12 @@ def est_plein(dictionnaire: tuple) -> bool:
 
 
 def ajouter(dictionnaire: tuple, cle: str, valeur: object) -> None:
-    """
-    Il ajoute une paire clé-valeur au dictionnaire
-    
+    """Ajoute une valeur à un dictionnaire
+
     Args:
-      dictionnaire (tuple): tuple
-      cle (str): chaîne
-      valeur (object): la valeur que vous voulez ajouter au dictionnaire
+        dictionnaire (tuple): le dictionnaire
+        cle (str): la clé
+        valeur (object): la valeur
     """
     if est_plein(dictionnaire):
         raise Exception("Le dictionnaire est plein")
@@ -90,47 +84,41 @@ def ajouter(dictionnaire: tuple, cle: str, valeur: object) -> None:
         cles[hachage(cle)] = cle
         valeurs[hachage(cle)] = valeur
     else:
-        i = 0
-        while(i < N and cles[i] != 0):
-            if cles[i] == cle:
+        for i in range(N):
+            if cles[i] == 0:
                 cles[i] = cle
                 valeurs[i] = valeur
-            else:
-                i+=1
+                break
+
 
 def supprimer(dictionnaire: tuple, cle: str) -> None:
-    """
-    Si la clé est dans le premier emplacement, supprimez-la, sinon, recherchez-la et supprimez-la
-    
+    """Supprime une valeur d'un dictionnaire
+
     Args:
-      dictionnaire (tuple): tuple
-      cle (str): la clé à supprimer
+        dictionnaire (tuple): le dictionnaire
+        cle (str): la clé
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
         cles[hachage(cle)] = 0
         valeurs[hachage(cle)] = 0
     else:
-        i = 0
-        while(i < N and cles[i] != cle):
+        for i in range(N):
             if cles[i] == cle:
                 cles[i] = 0
                 valeurs[i] = 0
-            else:
-                i+=1
+                break
 
 
 def lire(dictionnaire: tuple, cle: str) -> object | None:
-    """
-    Il renvoie la valeur associée à la clé 'cle' dans le dictionnaire 'dictionnaire' s'il existe, et
-    'None' sinon
-    
+    """ Lit une valeur d'un dictionnaire
+
     Args:
-      dictionnaire (tuple): tuple
-      cle (str): la clé à chercher
-    
+        dictionnaire (tuple): le dictionnaire
+        cle (str): la clé
+
     Returns:
-      La valeur associée à la clé.
+        object: la valeur
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
@@ -143,14 +131,12 @@ def lire(dictionnaire: tuple, cle: str) -> object | None:
 
 
 def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
-    """
-    Il prend un tuple de deux listes, une clé et une valeur, et modifie la valeur dans la deuxième liste
-    à l'index de la clé dans la première liste
-    
+    """ Modifie une valeur d'un dictionnaire
+
     Args:
-      dictionnaire (tuple): tuple
-      cle (str): la clé à modifier
-      valeur (object): la valeur que vous souhaitez modifier
+        dictionnaire (tuple): le dictionnaire
+        cle (str): la clé
+        valeur (object): la valeur
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
@@ -163,22 +149,21 @@ def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
 
 
 def rechercher(dictionnaire: tuple, valeur: object) -> str | None:
-    """
-    Il renvoie la clé associée à la valeur donnée dans le dictionnaire donné, ou None si la valeur n'est
-    pas dans le dictionnaire
-    
+    """ Recherche une clé à partir d'une valeur
+
     Args:
-      dictionnaire (tuple): tuple
-      valeur (object): la valeur pour laquelle vous voulez trouver la clé
-    
+        dictionnaire (tuple): le dictionnaire
+        valeur (object): la valeur
+
     Returns:
-      Clé associée à la valeur.
+        str: la clé
     """
     cles, valeurs = dictionnaire
     for i in range(N):
         if valeurs[i] == valeur:
             return cles[i]
     return None
+
 
 if __name__ == "__main__":
     dico = creer_dictionnaire()
