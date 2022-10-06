@@ -53,6 +53,7 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
    a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Listes) <br>
    b. [Piles](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Piles) <br>
    c. [Files](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Files) <br>
+   d. [Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Dictionnaires) <br>
 3. [TurtleFractalesArbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/3-TurtleFractalesArbres) <br>
 
 ### Construit avec
