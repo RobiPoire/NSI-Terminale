@@ -156,10 +156,12 @@ def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
     if cles[hachage(cle)] == cle:
         valeurs[hachage(cle)] = valeur
     else:
-        for i in range(N):
+        i = 0
+        while(i < N and cles[i] != cle):
             if cles[i] == cle:
                 valeurs[i] = valeur
-                break
+            else:
+                i+=1
 
 
 def rechercher(dictionnaire: tuple, valeur: object) -> str | None:
