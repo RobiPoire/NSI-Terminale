@@ -263,10 +263,12 @@ class TestDictionaries(unittest.TestCase):
         self.assertEqual(dictionary.dictionary,
                          (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0]))
         dictionary.edit("Hello", 11)
-        self.assertEqual(dictionary.dictionary, (["Hello", "World", 0, "!", 0], [11, 2, 0, 3, 0]))
+        self.assertEqual(dictionary.dictionary,
+                         (["Hello", "World", 0, "!", 0], [11, 2, 0, 3, 0]))
         print(dictionary.dictionary)
         dictionary.edit("World", 22)
-        self.assertEqual(dictionary.dictionary, (['Hello', 'World', 0, '!', 0], [11, 22, 0, 3, 0]))
+        self.assertEqual(dictionary.dictionary,
+                         (['Hello', 'World', 0, '!', 0], [11, 22, 0, 3, 0]))
         with self.assertRaises(ValueError):
             dictionary.edit("Goodbye", 1)
 
