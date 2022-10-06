@@ -420,8 +420,8 @@ class Dictionaries:
             for i in range(self.size):
                 if keys[i] == key:
                     values[i] = value
-                    break
-            raise IndexError(f"Dictionary doesn't contain {key}")
+                    return None
+            raise ValueError(f"Dictionary doesn't contain {key}")
 
     def is_empty(self) -> bool:
         """Is the dictionary empty
