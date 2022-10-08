@@ -1,7 +1,0 @@
-Les piles - Exercice 1
-~~~~~~~~~~~~~~~~~~~~~~~
-
-P = [8,B,O,N,J,O,U,R]
-N = CREER_PILE_VIDE()
-Tant que EST_VIDE(P) == Faux :
-    EMPILER(N,DEPILER(P))
