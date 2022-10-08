@@ -8,7 +8,7 @@
 [![Size][size-shield]][size-url]
 
   <a href="https://lycee-oiselet.fr">
-    <img src="https://lycee-oiselet.fr/images/logo/oiselet-transparent.png" alt="Logo" width="160" height="160">
+    <img src="https://lycee-oiselet.fr/images/logo/oiselet-transparent.png" alt="Logo" width="180" height="180">
   </a>
 
 <h3 align="center">NSI Terminale</h3>
@@ -25,6 +25,9 @@
   <ol>
     <li>
       <a href="#description">Description</a>
+      <ul>
+        <li><a href="#requierements">Requierements</a></li>
+      </ul>
       <ul>
         <li><a href="#chapitres">Chapitres</a></li>
       </ul>
@@ -45,16 +48,22 @@
 Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-2023.
 <br/>
 
+### Requierements
+
+-   [Python 3.10+](https://peps.python.org/pep-0619/)
+
 ### Chapitres
 
-0. [TravauxAméliorés](https://github.com/RobiPoire/NSI-Terminale/blob/main/0-TravauxAmélioré)
-1. [Révisions](https://github.com/RobiPoire/NSI-Terminale/blob/main/1-Revisions)
-2. [StructureDonnéesLinéaires](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires) <br>
-   a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Listes) <br>
-   b. [Piles](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Piles) <br>
-   c. [Files](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Files) <br>
-   d. [Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/2-StructureDonnéesLinéaires/Dictionnaires) <br>
-3. [TurtleFractalesArbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/3-TurtleFractalesArbres) <br>
+0. [Améliorations](https://github.com/RobiPoire/NSI-Terminale/blob/main/0-TravauxAmélioré)
+1. [Révisions](https://github.com/RobiPoire/NSI-Terminale/blob/main/C1_Révisions)
+2. [Types Abstraits](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits) <br>
+   a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Listes) <br>
+   b. [Piles](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Piles) <br>
+   c. [Files](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Files) <br>
+   d. [Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Dictionnaires) <br>
+3. [Fractales & Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C3_Fractales_Arbres) <br>
+
+[Archives](https://github.com/RobiPoire/NSI-Terminale/blob/main/Archives)
 
 ### Construit avec
 
@@ -80,7 +89,6 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 -   [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 -   [Github Student Developer Pack](https://education.github.com/pack)
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [python]: https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white
@@ -95,4 +103,3 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 [commits-url]: https://github.com/RobiPoire/NSI-Terminale/commits/main
 [size-shield]: https://img.shields.io/github/repo-size/RobiPoire/NSI-Terminale?style=for-the-badge
 [size-url]: https://github.com/RobiPoire/NSI-Terminale
-
