@@ -1,10 +1,10 @@
 """
 Recursivité - La suite de Fibonacci 
-~~~~~~~~~~~~~~~~~~~~~~~
-Implémentation de la suite de Fibonacci avec et sans mémorisation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Implémentation de la suite de Fibonacci avec 3 méthodes différentes:
 """
 
-__author__ = "HabibLebsir, RobiPoire"
+__author__ = "RobiPoire"
 
 import sys
 from time import perf_counter
@@ -42,6 +42,7 @@ def fibo_memo(n: int, memo: dict = {}) -> int:
         return memo[n]
     else:
         return n
+# TODO: Faire le bon fibo_memo
 
 
 def fibo_itteration(n: int) -> int:
@@ -66,15 +67,19 @@ def fibo_itteration(n: int) -> int:
 
 # Exemples d'utilisation
 if __name__ == "__main__":
+    nombre_de_fibonacci = 39
     debut = perf_counter()
-    print(fibo(35))
+    print(fibo(nombre_de_fibonacci))
     fin = perf_counter()
     print(f"Temps d'exécution: {fin - debut} secondes de fibo")
-    debut = perf_counter()  
-    print(fibo_memo(35))
+    debut = perf_counter()
+    print(fibo_memo(nombre_de_fibonacci))
     fin = perf_counter()
     print(f"Temps d'exécution: {fin - debut} secondes de fibo_memo")
     debut = perf_counter()
-    print(fibo_itteration(35))
+    print(fibo_itteration(nombre_de_fibonacci))
     fin = perf_counter()
-    print(f"Temps d'exécution: {round(fin - debut)} secondes de fibo_itteration")
+    print(
+        f"Temps d'exécution: {round(fin - debut)} secondes de fibo_itteration")
+
+# TODO: Faire les courbes de temps d'exécution
