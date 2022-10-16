@@ -6,6 +6,8 @@
 [![License][license-shield]][license-url]
 [![Commits][commits-shield]][commits-url]
 [![Size][size-shield]][size-url]
+[![Issues][issues-shield]][issues-url]
+[![Contributors][contributors-shield]][contributors-url]
 
   <a href="https://lycee-oiselet.fr">
     <img src="https://lycee-oiselet.fr/images/logo/oiselet-transparent.png" alt="Logo" width="180" height="180">
@@ -104,3 +106,7 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 [commits-url]: https://github.com/RobiPoire/NSI-Terminale/commits/main
 [size-shield]: https://img.shields.io/github/repo-size/RobiPoire/NSI-Terminale?style=for-the-badge
 [size-url]: https://github.com/RobiPoire/NSI-Terminale
+[issues-shield]: https://img.shields.io/github/issues/RobiPoire/NSI-Terminale?style=for-the-badge
+[issues-url]: https://github.com/RobiPoire/NSI-Terminale/issues
+[contributors-shield]: https://img.shields.io/github/contributors/RobiPoire/NSI-Terminale?style=for-the-badge
+[contributors-url]: https://github.com/RobiPoire/NSI-Terminale/graphs/contributors
