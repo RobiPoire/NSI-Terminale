@@ -22,7 +22,7 @@ def carre(longueur: int) -> None:
     for i in range(4):
         forward(longueur)
         left(90)
-    # TODO: Rajouter les diagonales du carré
+    # TODO: #3 Rajouter les diagonales du carré
 
 
 # A.4.2

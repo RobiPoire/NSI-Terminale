@@ -42,7 +42,7 @@ def fibo_memo(n: int, memo: dict = {}) -> int:
         return memo[n]
     else:
         return n
-# TODO: Faire le bon fibo_memo
+# TODO: #4 Faire le bon fibo_memo
 
 
 def fibo_itteration(n: int) -> int:
@@ -82,4 +82,4 @@ if __name__ == "__main__":
     print(
         f"Temps d'exécution: {round(fin - debut)} secondes de fibo_itteration")
 
-# TODO: Faire les courbes de temps d'exécution
+# TODO: #5 Faire les courbes de temps d'exécution
