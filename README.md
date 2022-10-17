@@ -65,7 +65,6 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 3. [Fractales & Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C3_Fractales_Arbres) <br>
 4. [Récursivité](https://github.com/RobiPoire/NSI-Terminale/blob/Exercices-Récursivité/C4_Récursivité) <br>
 
-[Archives](https://github.com/RobiPoire/NSI-Terminale/blob/main/Archives)
 
 ### Construit avec
 
