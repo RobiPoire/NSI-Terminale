@@ -1,22 +1,13 @@
-"""
-Recursivité - La suite de Fibonacci 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Implémentation de la suite de Fibonacci avec 3 méthodes différentes:
-"""
-
-__author__ = "RobiPoire, Devnatiofrabackup"
-
 import sys
-from time import perf_counter
-sys.setrecursionlimit(1000000000)  # Augmentation de la limite de récursivité
+import time
+import matplotlib.pyplot as plt
+sys.setrecursionlimit(1000000000)
 
 
 def fibo(n: int) -> int:
     """Calcul de la suite de Fibonacci
-
     Args:
         n (int): le nombre de la suite de Fibonacci
-
     Returns:
         int: le nombre de la suite de Fibonacci
     """
@@ -27,10 +18,8 @@ def fibo(n: int) -> int:
 
 def fibo_memo(n: int) -> int:
     """Calcul de la suite de Fibonacci avec mémorisation
-
     Args:
         n (int): le nombre de la suite de Fibonacci
-
     Returns:
         int: le nombre de la suite de Fibonacci
     """
@@ -46,10 +35,8 @@ def fibo_memo(n: int) -> int:
 
 def fibo_itteration(n: int) -> int:
     """Calcul de la suite de Fibonacci avec itération
-
     Args:
         n (int): le nombre de la suite de Fibonacci
-
     Returns:
         int: le nombre de la suite de Fibonacci
     """
@@ -62,39 +49,23 @@ def fibo_itteration(n: int) -> int:
         for i in range(2, n + 1):
             a, b = b, a + b
         return b
-def moyenne(liste):
-    return sum(liste) / len(liste)
-times = []
-fibo1 = []
-i=0
-for i in range(35):
-    depart = time.perf_counter()
-    x = fibo(i)
-    fin = time.perf_counter()
-    currenttime = fin-depart
-    times+=[currenttime]
-    fibo1+=[i]
 
-print(fin-depart)
-plt.plot(fibo1, times)
-plt.show()
+def graphique(fibonacci, n: int) -> float:
+    times = []
+    fiboX = []
 
+    for i in range(n):
+        depart = time.perf_counter()
+        x = fibonacci(i)
+        fin = time.perf_counter()
+        currenttime = fin - depart
+        times += [currenttime]
+        fiboX += [i]
+    plt.plot(fiboX, times)
+    plt.show()
+    return f"Temps d'exécution: {fin - depart} secondes de fibo"
 
-# Exemples d'utilisation
 if __name__ == "__main__":
-    nombre_de_fibonacci = 39
-    debut = perf_counter()
-    print(fibo(nombre_de_fibonacci))
-    fin = perf_counter()
-    print(f"Temps d'exécution: {fin - debut} secondes de fibo")
-    debut = perf_counter()
-    print(fibo_memo(nombre_de_fibonacci))
-    fin = perf_counter()
-    print(f"Temps d'exécution: {fin - debut} secondes de fibo_memo")
-    debut = perf_counter()
-    print(fibo_itteration(nombre_de_fibonacci))
-    fin = perf_counter()
-    print(
-        f"Temps d'exécution: {round(fin - debut)} secondes de fibo_itteration")
-
-# TODO: #5 Faire les courbes de temps d'exécution
+    print(graphique(fibo, 20))
+    print(graphique(fibo_memo, 2000))
+    print(graphique(fibo_itteration, 2000))
