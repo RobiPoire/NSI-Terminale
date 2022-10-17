@@ -25,24 +25,23 @@ def fibo(n: int) -> int:
     return n
 
 
-def fibo_memo(n: int, memo: dict = {}) -> int:
+def fibo_memo(n: int) -> int:
     """Calcul de la suite de Fibonacci avec mémorisation
 
     Args:
         n (int): le nombre de la suite de Fibonacci
-        memo (dict): le dictionnaire de mémorisation
 
     Returns:
         int: le nombre de la suite de Fibonacci
     """
-    if n in memo:
+    memo = {0: 0, 1: 1}
+
+    def fibo(n) -> int:
+        if n not in memo:
+            memo[n] = fibo(n - 1) + fibo(n - 2)
         return memo[n]
-    elif n > 1:
-        memo[n] = fibo_memo(n - 1, memo) + fibo_memo(n - 2, memo)
-        return memo[n]
-    else:
-        return n
-# TODO: #4 Faire le bon fibo_memo
+
+    return fibo(n)
 
 
 def fibo_itteration(n: int) -> int:
