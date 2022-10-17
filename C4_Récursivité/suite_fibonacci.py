@@ -4,7 +4,7 @@ Recursivité - La suite de Fibonacci
 Implémentation de la suite de Fibonacci avec 3 méthodes différentes:
 """
 
-__author__ = "RobiPoire"
+__author__ = "RobiPoire, Devnatiofrabackup"
 
 import sys
 from time import perf_counter
@@ -62,6 +62,22 @@ def fibo_itteration(n: int) -> int:
         for i in range(2, n + 1):
             a, b = b, a + b
         return b
+def moyenne(liste):
+    return sum(liste) / len(liste)
+times = []
+fibo1 = []
+i=0
+for i in range(35):
+    depart = time.perf_counter()
+    x = fibo(i)
+    fin = time.perf_counter()
+    currenttime = fin-depart
+    times+=[currenttime]
+    fibo1+=[i]
+
+print(fin-depart)
+plt.plot(fibo1, times)
+plt.show()
 
 
 # Exemples d'utilisation
