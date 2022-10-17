@@ -14,7 +14,7 @@ from math import *
 
 # A.4.1
 def carre(longueur: int) -> None:
-    """Dessine un carré de la longueur donnée
+    """Dessine un carré avec ses diagonales de la longueur donnée
 
     Args:
         longueur (int): la longueur des côtés du carré
@@ -22,7 +22,12 @@ def carre(longueur: int) -> None:
     for i in range(4):
         forward(longueur)
         left(90)
-    # TODO: #3 Rajouter les diagonales du carré
+    left(45)
+    forward(sqrt(2*longueur**2))
+    left(135)
+    forward(longueur)
+    left(135)
+    forward(sqrt(2*longueur**2))
 
 
 # A.4.2
