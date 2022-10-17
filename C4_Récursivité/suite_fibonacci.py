@@ -1,3 +1,11 @@
+"""
+Recursivité - La suite de Fibonacci 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Implémentation de la suite de Fibonacci avec 3 méthodes différentes:
+"""
+
+__author__ = "RobiPoire, HabibLebsir, devnatiofrance"
+
 import sys
 import time
 import matplotlib.pyplot as plt
@@ -50,13 +58,23 @@ def fibo_itteration(n: int) -> int:
             a, b = b, a + b
         return b
 
-def graphique(fibonacci, n: int) -> float:
+
+def graphique(fibonacci: object, n: int) -> float:
+    """Calcul le temps d'exécution d'une fonction
+
+    Args:
+        fibonacci (object): la fonction à tester
+        n (int): le nombre de la suite de Fibonacci
+
+    Returns:
+        float: le temps d'exécution
+    """
     times = []
     fiboX = []
 
     for i in range(n):
         depart = time.perf_counter()
-        x = fibonacci(i)
+        fibonacci(i)
         fin = time.perf_counter()
         currenttime = fin - depart
         times += [currenttime]
@@ -65,7 +83,9 @@ def graphique(fibonacci, n: int) -> float:
     plt.show()
     return f"Temps d'exécution: {fin - depart} secondes de fibo"
 
-if __name__ == "__main__":
+
+# Exemples d'utilisation
+if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
     print(graphique(fibo, 20))
     print(graphique(fibo_memo, 2000))
     print(graphique(fibo_itteration, 2000))
