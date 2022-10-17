@@ -56,6 +56,8 @@ def triangle_sierpinsky(longueur: int, repetitions: int) -> None:
 # Exemple d'utilisation
 if __name__ == "__main__":
     speed(0)
-   # flocon_koch(300, 4)
-   # triangle_sierpinsky(300, 3)
+    # flocon_koch(300, 4)
+    # for i in range(3):
+        # flocon_koch(300, 4)
+        # right(120)
     mainloop()
