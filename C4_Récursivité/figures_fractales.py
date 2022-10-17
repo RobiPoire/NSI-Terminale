@@ -4,7 +4,7 @@ Recursivité - Les figures fractales
 Les figures fractales implémentées 
 """
 
-__author__ = "RobiPoire, Un homosexuel, sylvain pierredurif, devnationfrance"      
+__author__ = "RobiPoire, HabibLebsir"      
 
 from turtle import *
 
