@@ -24,3 +24,5 @@ def robot_cupide(x, y):
 # Exemples d'utilisation
 if __name__ == "__main__":  # Se lance uniquement si le fichier est exécuté
     print(robot_cupide(3, 0))
+
+# ATTENTION: Je ne suis pas sûr que ce soit la bonne solution (je ne suis pas sûr de comprendre l'énoncé).
