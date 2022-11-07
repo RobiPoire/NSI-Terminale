@@ -6,6 +6,8 @@ Vérifier si une expression est correctement parenthésée
 
 __author__ = "RobiPoire"
 
+from typing import Any
+
 # On importe les fonctions sur les piles
 try:
     import ex2 as Pile
@@ -16,7 +18,7 @@ except ImportError:  # Pour pouvoir importer les fonctions pour l'exercice 5 sur
 Pile.N = 6
 
 
-def sommet(pile: list) -> object:
+def sommet(pile: list) -> Any:
     """Retourne le sommet de la pile sans la dépiler
 
     Args:
@@ -26,7 +28,7 @@ def sommet(pile: list) -> object:
         IndexError: Si la pile est vide
 
     Returns:
-        object: Le sommet de la pile
+        Any: Le sommet de la pile
     """
     if Pile.est_vide(pile):  # Si la pile est vide, on ne peut pas retourner le sommet
         raise IndexError("La pile est vide, impossible de dépiler un élément")

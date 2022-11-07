@@ -6,6 +6,9 @@ Les fonctions du type astrait pile implémentées en Python
 
 __author__ = "RobiPoire"
 
+from typing import Any
+
+
 # Taille maximale des piles
 N = 4
 
@@ -16,27 +19,28 @@ def creer_pile_vide() -> list:
     Returns:
         list: Une pile vide de taille N
     """
-    return [1]+[0]*(N)
+    return [1] + [0] * (N)
 
 
-def empiler(pile: list, element: object) -> None:
+def empiler(pile: list, element: Any) -> None:
     """Empile un élément dans la pile
 
     Args:
         pile (list): La pile
-        element (object): L'élément à empiler
+        element (Any): L'élément à empiler
 
     Raises:
         IndexError: Si la pile est pleine
     """
     if est_pleine(pile):  # Si la pile est pleine, on ne peut pas empiler
         raise IndexError(
-            f"La pile est pleine, impossible d'empiler '{element}' (taille max: {N})")
+            f"La pile est pleine, impossible d'empiler '{element}' (taille max: {N})"
+        )
     pile[pile[0]] = element  # On ajoute l'élément à la pile
     pile[0] += 1  # On ajoute 1 à l'indice du sommet
 
 
-def depiler(pile: list) -> object:
+def depiler(pile: list) -> Any:
     """Dépile un élément de la pile
 
     Args:
@@ -46,7 +50,7 @@ def depiler(pile: list) -> object:
         IndexError: Si la pile est vide
 
     Returns:
-        object: L'élément dépiler
+        Any: L'élément dépiler
     """
     if est_vide(pile):  # Si la pile est vide, on ne peut rien dépiler
         raise IndexError("La pile est vide, impossible de dépiler un élément")
@@ -63,7 +67,9 @@ def est_vide(pile: list) -> bool:
     Returns:
         bool: True si la pile est vide, False sinon
     """
-    return pile[0] <= 1  # Si l'indice du sommet est inférieur ou égal à 1, la pile est vide
+    return (
+        pile[0] <= 1
+    )  # Si l'indice du sommet est inférieur ou égal à 1, la pile est vide
 
 
 def est_pleine(pile: list) -> bool:
@@ -75,7 +81,9 @@ def est_pleine(pile: list) -> bool:
     Returns:
         bool: True si la pile est pleine, False sinon
     """
-    return pile[0] >= N+3  # Si l'indice du sommet est supérieur ou égal à N+3, la pile est pleine
+    return (
+        pile[0] >= N + 3
+    )  # Si l'indice du sommet est supérieur ou égal à N+3, la pile est pleine
 
 
 # Exemple d'utilisation

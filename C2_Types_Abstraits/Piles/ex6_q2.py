@@ -118,11 +118,11 @@ def tri_crepes(pile: list) -> None:
     hauteur = hauteur_pile(pile)  # On récupère la hauteur de la pile
     for i in range(hauteur):  # On parcourt toute la pile
         # On récupère la position de l'élément le plus grand
-        position = max_pile(pile, hauteur-i)
+        position = max_pile(pile, hauteur - i)
         # On retourne les éléments jusqu'à la position
         retourner(pile, position)
         # On retourne les éléments jusqu'à la hauteur-i
-        retourner(pile, hauteur-i)
+        retourner(pile, hauteur - i)
 
 
 # Exemple d'utilisation

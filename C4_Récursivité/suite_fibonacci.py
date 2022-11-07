@@ -8,7 +8,9 @@ __author__ = "RobiPoire, HabibLebsir, devnatiofrance"
 
 import sys
 import time
+from typing import Any, Callable
 import matplotlib.pyplot as plt
+
 sys.setrecursionlimit(1000000000)
 
 
@@ -59,11 +61,11 @@ def fibo_itteration(n: int) -> int:
         return b
 
 
-def graphique(fibonacci: object, n: int) -> float:
+def graphique(fibonacci: Callable[[int], int], n: int) -> str:
     """Calcul le temps d'exécution d'une fonction
 
     Args:
-        fibonacci (object): la fonction à tester
+        fibonacci (Any): la fonction à tester
         n (int): le nombre de la suite de Fibonacci
 
     Returns:
@@ -81,7 +83,7 @@ def graphique(fibonacci: object, n: int) -> float:
         fiboX += [i]
     plt.plot(fiboX, times)
     plt.show()
-    return f"Temps d'exécution: {fin - depart} secondes de fibo"
+    return f"Temps d'exécution de la fonction {fibonacci.__name__} pour {n} itérations : {times[-1]} secondes"
 
 
 # Exemples d'utilisation

@@ -7,6 +7,9 @@ Les fonctions du type astrait dictionnaire implémentées en Python
 __auhtor__ = "RobiPoire"
 
 
+from typing import Any
+
+
 N = 25
 
 
@@ -18,7 +21,7 @@ def creer_dictionnaire() -> tuple:
 
 
 def hachage(cle: str) -> int:
-    """ Hachage d'une clé en un entier entre 0 et N-1
+    """Hachage d'une clé en un entier entre 0 et N-1
 
     Args:
         cle (str): la clé à hacher
@@ -32,13 +35,13 @@ def hachage(cle: str) -> int:
     return somme % N
 
 
-def ajouter(dictionnaire: tuple, cle: str, valeur: object) -> None:
-    """ Ajoute une valeur à un dictionnaire
+def ajouter(dictionnaire: tuple, cle: str, valeur: Any) -> None:
+    """Ajoute une valeur à un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
-        valeur (object): la valeur
+        valeur (Any): la valeur
     """
     cles, valeurs = dictionnaire
     cles[hachage(cle)] = cle
@@ -46,7 +49,7 @@ def ajouter(dictionnaire: tuple, cle: str, valeur: object) -> None:
 
 
 def supprimer(dictionnaire: tuple, cle: str) -> None:
-    """ Supprime une valeur d'un dictionnaire
+    """Supprime une valeur d'un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
@@ -57,27 +60,27 @@ def supprimer(dictionnaire: tuple, cle: str) -> None:
     valeurs[hachage(cle)] = 0
 
 
-def lire(dictionnaire: tuple, cle: str) -> object:
-    """ Lit une valeur d'un dictionnaire
+def lire(dictionnaire: tuple, cle: str) -> Any:
+    """Lit une valeur d'un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
 
     Returns:
-        object: la valeur
+        Any: la valeur
     """
     valeurs = dictionnaire[1]
     return valeurs[hachage(cle)]
 
 
-def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
-    """ Modifie une valeur d'un dictionnaire
+def modifier(dictionnaire: tuple, cle: str, valeur: Any) -> None:
+    """Modifie une valeur d'un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
-        valeur (object): la valeur
+        valeur (Any): la valeur
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
@@ -86,12 +89,12 @@ def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
         raise ValueError(f"L'élément {cle} n'existe pas")
 
 
-def rechercher(dictionnaire: tuple, valeur: object) -> str | None:
-    """ Recherche une clé à partir d'une valeur
+def rechercher(dictionnaire: tuple, valeur: Any) -> str | None:
+    """Recherche une clé à partir d'une valeur
 
     Args:
         dictionnaire (tuple): le dictionnaire
-        valeur (object): la valeur
+        valeur (Any): la valeur
 
     Returns:
         str: la clé

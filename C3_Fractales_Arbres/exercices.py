@@ -23,11 +23,11 @@ def carre(longueur: int) -> None:
         forward(longueur)
         left(90)
     left(45)
-    forward(sqrt(2*longueur**2))
+    forward(sqrt(2 * longueur**2))
     left(135)
     forward(longueur)
     left(135)
-    forward(sqrt(2*longueur**2))
+    forward(sqrt(2 * longueur**2))
 
 
 # A.4.2
@@ -80,7 +80,7 @@ def triangle_rectangle(longueur: int) -> None:
         forward(longueur)
         left(90)
     left(45)
-    forward(sqrt(2*longueur**2))
+    forward(sqrt(2 * longueur**2))
     left(135)
 
 
@@ -93,7 +93,7 @@ def figure_triangles_rectangle(longueur: int, repetitions: int) -> None:
         repetitions (int): le nombre de répétitions
     """
     for i in range(1, repetitions):
-        triangle_rectangle(longueur*i)
+        triangle_rectangle(longueur * i)
 
 
 # Partie B
@@ -120,7 +120,7 @@ def trace(chaine: str, longueur: int, angle: int) -> None:
 
 # C.2
 def deplacement(s: str, motif: str, repetitions: int) -> str:
-    """ Crée une nouvelle chaîne de caractères en appliquant le motif à la chaîne s
+    """Crée une nouvelle chaîne de caractères en appliquant le motif à la chaîne s
 
     Args:
         s (str): La chaîne de caractères à modifier
@@ -160,6 +160,7 @@ def courbe_quadratique_Koch_type_deux(longueur: int, repetitions: int) -> None:
     chaines = deplacement(chaines, "A-A+A+AA-A-A+A", repetitions)
     trace(chaines, longueur, 90)
 
+
 # Partie D
 
 
@@ -176,12 +177,13 @@ def triangle_sierpinsky(longueur: int, repetitions: int) -> None:
     trace(chaines, longueur, 120)
     # On trace le grand triangle autour :
     left(60)
-    forward(longueur*(2**repetitions))
+    forward(longueur * (2**repetitions))
     for i in range(2):
         left(120)
-        forward(longueur*(2**repetitions)*2)
+        forward(longueur * (2**repetitions) * 2)
     left(120)
-    forward(longueur*(2**repetitions))
+    forward(longueur * (2**repetitions))
+
 
 # Partie E
 
@@ -260,6 +262,7 @@ def plante_longiligne(longueur: int, repetitions: int) -> None:
     chaines = deplacement(chaines, "A[+A]A[-A]A", repetitions)
     trace2(chaines, longueur, 25)
 
+
 # E.3
 
 
@@ -279,17 +282,17 @@ def buisson_type_aneth(longueur: int, repetitions: int) -> None:
 # Exemple d'utilisation
 if __name__ == "__main__":
     speed(0)  # On met la vitesse de la tortue au maximum
-   # carre(10)
-   # triangle(10)
-   # figure_triangle(10)
-   # triangle_rectangle(10)
-   # figure_triangles_rectangle(10, 4)
-   # trace("A--A--A", 10, 60)
-   # deplacement("A--A--A", "A+A--A+A", 2)
-   # flocon_koch(5, 3)
-   # courbe_quadratique_Koch_type_deux(5, 3)
-   # triangle_sierpinsky(5, 3)
-   # arbre_simple(5, 4)
-   # plante_longiligne(5, 4)
-   # buisson_type_aneth(5, 4)
+    # carre(10)
+    # triangle(10)
+    # figure_triangle(10)
+    # triangle_rectangle(10)
+    # figure_triangles_rectangle(10, 4)
+    # trace("A--A--A", 10, 60)
+    # deplacement("A--A--A", "A+A--A+A", 2)
+    # flocon_koch(5, 3)
+    # courbe_quadratique_Koch_type_deux(5, 3)
+    # triangle_sierpinsky(5, 3)
+    # arbre_simple(5, 4)
+    # plante_longiligne(5, 4)
+    # buisson_type_aneth(5, 4)
     mainloop()  # Pour eviter des bugs avec turtle

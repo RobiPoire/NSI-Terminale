@@ -8,6 +8,8 @@ avec les méthodes .pop() et .append() du type liste de Python
 
 __author__ = "RobiPoire"
 
+from typing import Any
+
 # La taille maximum de la file
 N = 7
 
@@ -22,24 +24,25 @@ def creer_file_vide() -> list:
     return []
 
 
-def enfiler(file: list, element: object):
+def enfiler(file: list, element: Any):
     """Enfile un élément dans la file
 
     Args:
         file (list): La file
-        element (object): L'élément à enfiler
+        element (Any): L'élément à enfiler
 
     Raises:
         IndexError: Si la file est pleine
     """
     if est_pleine(file):  # Si la file est pleine, on ne peut rien enfiler
         raise IndexError(
-            f"La file est pleine, impossible d'enfiler '{element}' (taille max: {N})")
+            f"La file est pleine, impossible d'enfiler '{element}' (taille max: {N})"
+        )
     # On ajoute l'élément à la fin de la file
     file.append(element)
 
 
-def defiler(file: list) -> object:
+def defiler(file: list) -> Any:
     """Défile un élément de la file
 
     Args:
@@ -49,7 +52,7 @@ def defiler(file: list) -> object:
         IndexError: Si la file est vide
 
     Returns:
-        object: L'élément défilé
+        Any: L'élément défilé
     """
     if est_vide(file):  # Si la file est vide, on ne peut rien défiler
         raise IndexError("La file est vide, impossible de défiler un élément")

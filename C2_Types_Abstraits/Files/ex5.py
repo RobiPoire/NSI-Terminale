@@ -8,7 +8,9 @@ Puis calcule le résultat de l'expression postfixée
 __author__ = "RobiPoire"
 
 from sys import path
-path.append("C2_Types_Abstraits/")
+
+path.append("..")
+
 from Piles.ex5 import calcul
 from Piles.ex4 import sommet
 import Piles.ex2 as Pile
@@ -28,7 +30,8 @@ def conversion(expression: str) -> str:
     Returns:
         str: L'expression postfixée
     """
-    file_expression = File.creer_file_vide(
+    file_expression = (
+        File.creer_file_vide()
     )  # On crée une file vide pour stocker l'expression postfixée
     # On crée une pile vide pour stocker les opérateurs
     pile_operateurs = Pile.creer_pile_vide()

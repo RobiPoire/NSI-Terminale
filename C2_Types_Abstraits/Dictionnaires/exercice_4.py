@@ -8,6 +8,9 @@ Les fonctions du type astrait dictionnaire implémentées en Python
 __auhtor__ = "RobiPoire"
 
 
+from typing import Any
+
+
 N = 25
 
 
@@ -38,7 +41,7 @@ def hachage(cle: str) -> int:
 
 
 def est_vide(dictionnaire: tuple) -> bool:
-    """ Vérifie si un dictionnaire est vide
+    """Vérifie si un dictionnaire est vide
 
     Args:
         dictionnaire (tuple): le dictionnaire
@@ -54,7 +57,7 @@ def est_vide(dictionnaire: tuple) -> bool:
 
 
 def est_plein(dictionnaire: tuple) -> bool:
-    """ Vérifie si un dictionnaire est plein
+    """Vérifie si un dictionnaire est plein
 
     Args:
         dictionnaire (tuple): le dictionnaire
@@ -69,13 +72,13 @@ def est_plein(dictionnaire: tuple) -> bool:
     return True
 
 
-def ajouter(dictionnaire: tuple, cle: str, valeur: object) -> None:
+def ajouter(dictionnaire: tuple, cle: str, valeur: Any) -> None:
     """Ajoute une valeur à un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
-        valeur (object): la valeur
+        valeur (Any): la valeur
     """
     if est_plein(dictionnaire):
         raise Exception("Le dictionnaire est plein")
@@ -110,15 +113,15 @@ def supprimer(dictionnaire: tuple, cle: str) -> None:
                 break
 
 
-def lire(dictionnaire: tuple, cle: str) -> object | None:
-    """ Lit une valeur d'un dictionnaire
+def lire(dictionnaire: tuple, cle: str) -> Any | None:
+    """Lit une valeur d'un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
 
     Returns:
-        object: la valeur
+        Any: la valeur
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
@@ -130,13 +133,13 @@ def lire(dictionnaire: tuple, cle: str) -> object | None:
         return None
 
 
-def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
-    """ Modifie une valeur d'un dictionnaire
+def modifier(dictionnaire: tuple, cle: str, valeur: Any) -> None:
+    """Modifie une valeur d'un dictionnaire
 
     Args:
         dictionnaire (tuple): le dictionnaire
         cle (str): la clé
-        valeur (object): la valeur
+        valeur (Any): la valeur
     """
     cles, valeurs = dictionnaire
     if cles[hachage(cle)] == cle:
@@ -149,12 +152,12 @@ def modifier(dictionnaire: tuple, cle: str, valeur: object) -> None:
         raise ValueError(f"L'élément {cle} n'existe pas")
 
 
-def rechercher(dictionnaire: tuple, valeur: object) -> str | None:
-    """ Recherche une clé à partir d'une valeur
+def rechercher(dictionnaire: tuple, valeur: Any) -> str | None:
+    """Recherche une clé à partir d'une valeur
 
     Args:
         dictionnaire (tuple): le dictionnaire
-        valeur (object): la valeur
+        valeur (Any): la valeur
 
     Returns:
         str: la clé

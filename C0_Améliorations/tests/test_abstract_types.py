@@ -7,14 +7,13 @@ Functions to test the abstract linear data types of lists, stacks and queues imp
 __author__ = "RobiPoire"
 
 import unittest
-import sys 
+import sys
 
 sys.path.append("C0_Améliorations/")
 from abstract_types import *
 
 
 class TestLists(unittest.TestCase):
-
     def test_list_creation(self):
         """Test the creation of a list"""
         list = Lists(5)
@@ -79,7 +78,6 @@ class TestLists(unittest.TestCase):
 
 
 class TestStacks(unittest.TestCase):
-
     def test_stack_creation(self):
         """Test the creation of a stack"""
         stack = Stacks(5)
@@ -133,7 +131,6 @@ class TestStacks(unittest.TestCase):
 
 
 class TestQueues(unittest.TestCase):
-
     def test_queue_creation(self):
         """Test the creation of a queue"""
         queue = Queues(5)
@@ -187,26 +184,27 @@ class TestQueues(unittest.TestCase):
 
 
 class TestDictionaries(unittest.TestCase):
-
     def test_dictionary_creation(self):
         """Test the creation of a dictionary"""
         dictionary = Dictionaries(5)
         self.assertEqual(dictionary.size, 5)
-        self.assertEqual(dictionary.dictionary,
-                         ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
+        self.assertEqual(dictionary.dictionary, ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
 
     def test_dictionary_insert(self):
         """Test the insertion of an element in a dictionary"""
         dictionary = Dictionaries(5)
         dictionary.insert("Hello", 1)
-        self.assertEqual(dictionary.dictionary,
-                         (["Hello", 0, 0, 0, 0], [1, 0, 0, 0, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", 0, 0, 0, 0], [1, 0, 0, 0, 0])
+        )
         dictionary.insert("World", 2)
-        self.assertEqual(dictionary.dictionary,
-                         (["Hello", "World", 0, 0, 0], [1, 2, 0, 0, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", "World", 0, 0, 0], [1, 2, 0, 0, 0])
+        )
         dictionary.insert("!", 3)
-        self.assertEqual(dictionary.dictionary,
-                         (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0])
+        )
 
     def test_dictionary_delete(self):
         """Test the deletion of an element in a dictionary"""
@@ -215,14 +213,15 @@ class TestDictionaries(unittest.TestCase):
         dictionary.insert("World", 2)
         dictionary.insert("!", 3)
         dictionary.delete("Hello")
-        self.assertEqual(dictionary.dictionary,
-                         ([0, "World", 0, "!", 0], [0, 2, 0, 3, 0]))
+        self.assertEqual(
+            dictionary.dictionary, ([0, "World", 0, "!", 0], [0, 2, 0, 3, 0])
+        )
         dictionary.delete("!")
-        self.assertEqual(dictionary.dictionary,
-                         ([0, "World", 0, 0, 0], [0, 2, 0, 0, 0]))
+        self.assertEqual(
+            dictionary.dictionary, ([0, "World", 0, 0, 0], [0, 2, 0, 0, 0])
+        )
         dictionary.delete("World")
-        self.assertEqual(dictionary.dictionary,
-                         ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
+        self.assertEqual(dictionary.dictionary, ([0, 0, 0, 0, 0], [0, 0, 0, 0, 0]))
 
     def test_dictionary_full(self):
         """Test the fullness of a dictionary"""
@@ -263,14 +262,17 @@ class TestDictionaries(unittest.TestCase):
         dictionary.insert("Hello", 1)
         dictionary.insert("World", 2)
         dictionary.insert("!", 3)
-        self.assertEqual(dictionary.dictionary,
-                         (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", "World", 0, "!", 0], [1, 2, 0, 3, 0])
+        )
         dictionary.edit("Hello", 11)
-        self.assertEqual(dictionary.dictionary,
-                         (["Hello", "World", 0, "!", 0], [11, 2, 0, 3, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", "World", 0, "!", 0], [11, 2, 0, 3, 0])
+        )
         dictionary.edit("World", 22)
-        self.assertEqual(dictionary.dictionary,
-                         (['Hello', 'World', 0, '!', 0], [11, 22, 0, 3, 0]))
+        self.assertEqual(
+            dictionary.dictionary, (["Hello", "World", 0, "!", 0], [11, 22, 0, 3, 0])
+        )
         with self.assertRaises(ValueError):
             dictionary.edit("Goodbye", 1)
 
