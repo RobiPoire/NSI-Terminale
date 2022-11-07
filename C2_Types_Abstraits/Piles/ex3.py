@@ -7,6 +7,9 @@ avec les méthodes .pop() et .append() du type liste de Python
 
 __author__ = "RobiPoire"
 
+from typing import Any
+
+
 # Taille maximale des piles
 N = 4
 
@@ -20,23 +23,24 @@ def creer_pile_vide() -> list:
     return []  # Retourne juste une liste python vide
 
 
-def empiler(pile: list, element: object) -> None:
+def empiler(pile: list, element: Any) -> None:
     """Empile un élément dans la pile
 
     Args:
         pile (list): La pile
-        element (object): L'élément à empiler
+        element (Any): L'élément à empiler
 
     Raises:
         IndexError: Si la pile est pleine
     """
     if est_pleine(pile):  # Si la pile est pleine, on ne peut rien empiler
         raise IndexError(
-            f"La pile est pleine, impossible d'empiler '{element}' (taille max: {N})")
+            f"La pile est pleine, impossible d'empiler '{element}' (taille max: {N})"
+        )
     pile.append(element)  # On ajoute l'élément à la fin de la pile
 
 
-def depiler(pile: list) -> object:
+def depiler(pile: list) -> Any:
     """Dépile un élément de la pile
 
     Args:
@@ -46,7 +50,7 @@ def depiler(pile: list) -> object:
         IndexError: Si la pile est vide
 
     Returns:
-        object: L'élément dépiler
+        Any: L'élément dépiler
     """
     if est_vide(pile):  # Si la pile est vide, on ne peut rien dépiler
         raise IndexError("La pile est vide, impossible de dépiler un élément")

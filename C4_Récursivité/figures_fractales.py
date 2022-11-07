@@ -4,12 +4,12 @@ Recursivité - Les figures fractales
 Les figures fractales implémentées 
 """
 
-__author__ = "RobiPoire, HabibLebsir"      
+__author__ = "RobiPoire, HabibLebsir"
 
-from turtle import *
+from turtle import left, right, forward, speed, mainloop, backward
 
 
-def flocon_koch(longueur: int, repetitions: int) -> None:
+def flocon_koch(longueur: int | float, repetitions: int) -> None:
     """Dessine un flocon de Koch de la longueur donnée
 
     Args:
@@ -28,7 +28,7 @@ def flocon_koch(longueur: int, repetitions: int) -> None:
         flocon_koch(longueur / 3, repetitions - 1)
 
 
-def triangle_sierpinsky(longueur: int, repetitions: int) -> None:
+def triangle_sierpinsky(longueur: int | float, repetitions: int) -> None:
     """Dessine un triangle de Sierpinsky de la longueur donnée
 
     Args:
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     speed(0)
     # flocon_koch(300, 4)
     # for i in range(3):
-        # flocon_koch(300, 4)
-        # right(120)
+    # flocon_koch(300, 4)
+    # right(120)
     mainloop()

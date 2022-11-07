@@ -28,17 +28,17 @@ def calcul(expression: str) -> float:
     pile = Pile.creer_pile_vide()  # On crée une pile vide
     for element in expression.split():  # On parcourt chaque élément de l'expression
         if element == "+":
-            Pile.empiler(pile, Pile.depiler(pile) +
-                         Pile.depiler(pile))  # x + y
+            Pile.empiler(pile, Pile.depiler(pile) + Pile.depiler(pile))  # x + y
         elif element == "-":
-            Pile.empiler(pile, - Pile.depiler(pile) +
-                         Pile.depiler(pile))  # x - y = - y + x
+            Pile.empiler(
+                pile, -Pile.depiler(pile) + Pile.depiler(pile)
+            )  # x - y = - y + x
         elif element == "*":
-            Pile.empiler(pile, Pile.depiler(pile) *
-                         Pile.depiler(pile))  # x * y
+            Pile.empiler(pile, Pile.depiler(pile) * Pile.depiler(pile))  # x * y
         elif element == "/":
-            Pile.empiler(pile, 1 / Pile.depiler(pile) *
-                         Pile.depiler(pile))  # x / y = 1 / y * x
+            Pile.empiler(
+                pile, 1 / Pile.depiler(pile) * Pile.depiler(pile)
+            )  # x / y = 1 / y * x
         else:  # Si l'élément n'est pas un opérateur, on l'empile
             Pile.empiler(pile, float(element))  # On empile l'élément
     # On retourne le résultat du calcul arrondi à 4 décimales

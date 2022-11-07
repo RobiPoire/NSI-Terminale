@@ -6,6 +6,9 @@ Les fonctions du type astrait liste implémentées en Python
 
 __author__ = "RobiPoire & LythoPsycho"
 
+from typing import Any
+
+
 # La taille maximum de la liste
 N = 5
 
@@ -22,15 +25,15 @@ def creer_liste_vide() -> list:
     if N < 1:
         raise ValueError("n doit être supérieur à 0")
     # On crée une liste de taille N+1 avec la longueur de la liste en index 0
-    return [0] * (N+1)
+    return [0] * (N + 1)
 
 
-def inserer(liste: list, element: object, index: int) -> None:
+def inserer(liste: list, element: Any, index: int) -> None:
     """Insère un élément à l'index donné dans la liste
 
     Args:
         liste (list): La liste
-        element (object): L'élément à insérer
+        element (Any): L'élément à insérer
         index (int): L'index où insérer l'élément
 
     Raises:
@@ -39,13 +42,14 @@ def inserer(liste: list, element: object, index: int) -> None:
     """
     if index == 0:
         raise IndexError(  # On ne peut pas modifier la longueur de la liste
-            "L'index 0 est réservé pour la longueur de la liste")
+            "L'index 0 est réservé pour la longueur de la liste"
+        )
     if est_plein(liste):  # On ne peut pas insérer dans une liste pleine
         raise IndexError("Liste pleine")
     liste[0] += 1
     # Tout ce qui est après l'index i = tout ce qui est après l'index i-1 + [0]
     for i in range(longueur(liste), index, -1):
-        liste[i] = liste[i-1]
+        liste[i] = liste[i - 1]
     liste[index] = element
 
 
@@ -62,22 +66,23 @@ def supprimer(liste: list, index: int) -> None:
     """
     if index == 0:
         raise IndexError(  # On ne peut pas modifier la longueur de la liste
-            "L'index 0 est réservé pour la longueur de la liste")
+            "L'index 0 est réservé pour la longueur de la liste"
+        )
     if est_vide(liste):  # On ne peut pas supprimer dans une liste vide
         raise IndexError("Liste vide")
     liste[0] -= 1
     # Tout ce qui est après l'index i = tout ce qui est après l'index i+1 + [0]
-    for i in range(index, longueur(liste)+1):
-        liste[i] = liste[i+1]
-    liste[liste[0]+1] = 0
+    for i in range(index, longueur(liste) + 1):
+        liste[i] = liste[i + 1]
+    liste[liste[0] + 1] = 0
 
 
-def rechercher(liste: list, element: object) -> int:
+def rechercher(liste: list, element: Any) -> int:
     """Recherche un élément dans la liste
 
     Args:
         liste (list): La liste
-        element (object): L'élément à rechercher
+        element (Any): L'élément à rechercher
 
     Raises:
         ValueError: Si l'élément n'est pas dans la liste
@@ -94,7 +99,7 @@ def rechercher(liste: list, element: object) -> int:
     raise ValueError("L'élément n'est pas dans la liste")
 
 
-def lire(liste: list, index: int) -> object:
+def lire(liste: list, index: int) -> Any:
     """Lit un élément à l'index donné dans la liste
 
     Args:
@@ -105,28 +110,26 @@ def lire(liste: list, index: int) -> object:
         IndexError: Si l'index est inférieur à 1
 
     Returns:
-        object: L'élément à l'index donné
+        Any: L'élément à l'index donné
     """
     if index == 0:  # L'index 0 est réservé pour la longueur de la liste
-        raise IndexError(
-            "L'index 0 est est réservé pour la longueur de la liste")
+        raise IndexError("L'index 0 est est réservé pour la longueur de la liste")
     return liste[index]
 
 
-def modifier(liste: list, element: object, index: int) -> None:
+def modifier(liste: list, element: Any, index: int) -> None:
     """Modifie un élément à l'index donné dans la liste
 
     Args:
         liste (list): La liste
-        element (object): L'élément à modifier
+        element (Any): L'élément à modifier
         index (int): L'index où modifier l'élément
 
     Raises:
         IndexError: Si l'index est inférieur à 1
     """
     if index == 0:  # L'index 0 est réservé pour la longueur de la liste
-        raise IndexError(
-            "L'index 0 est est réservé pour la longueur de la liste")
+        raise IndexError("L'index 0 est est réservé pour la longueur de la liste")
     liste[index] = element
 
 
