@@ -4,7 +4,7 @@ Hanoi Project - Analyse de la complexité
 Fichier contenant les fonctions pour l'analyse de la complexité
 """
 
-__author__ = "RobiPoire, HabibLebsir, devnatiofrance"
+__author__ = "RobiPoire"
 
 
 # Importation des modules nécessaires
@@ -73,7 +73,8 @@ def hanoi_graph(disc_number: int) -> None:
         times_list.append(hanoi_resolution_time(i))
 
     # Afficher le nombre d'étapes pour le nombre de disque donné
-    print(f"Nombre d'étapes pour {disc_number} disque(s) : {2**disc_number - 1}")
+    print(
+        f"Nombre d'étapes pour {disc_number} disque(s) : {2**disc_number - 1}")
 
     # On affiche le graphique du temps d'exécution
     resolution_time_graph(times_list)

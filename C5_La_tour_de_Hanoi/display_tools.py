@@ -4,7 +4,7 @@ Hanoi project - Outils d'affichage
 Fichier contenant les fonctions utilisé pour la fonction hanoi_display
 """
 
-__author__ = "RobiPoire, HabibLebsir, devnatiofrance"
+__author__ = "RobiPoire"
 
 
 def maximum(integer_list: list) -> int:
@@ -153,6 +153,7 @@ def horizontal_pillars_display(pillars: list, iteration_number: int) -> str:
 
     # On retourne l'affichage final
     return f"{interations_display}\n{display}\n{dashes}"
+
 
 def vertical_pillars_display(pillars: list, iteration_number: int) -> str:
     """Affiche les piliers verticalement

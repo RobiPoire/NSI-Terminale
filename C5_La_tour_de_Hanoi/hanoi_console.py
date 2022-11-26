@@ -4,7 +4,7 @@ Hanoi Project - Fonctions Console
 Fichier contenant les fonctions pour l'affichage de la tour de Hanoi dans la console.
 """
 
-__author__ = "RobiPoire, HabibLebsir, devnatiofrance"
+__author__ = "RobiPoire"
 
 
 # Importations des types (pour les annotations)

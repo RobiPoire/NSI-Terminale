@@ -5,12 +5,13 @@ Fichier principal du projet de la tour de Hanoi.
 Fichier a exécuter pour lancer le programme.
 """
 
-__author__ = "RobiPoire, HabibLebsir, devnatiofrance"
+__author__ = "RobiPoire"
 
 
 # Importation des fonctions de hanoi.py & de complexity.py
 from hanoi_console import *
 from complexity import hanoi_graph
+from Tkinter.tkinter_main import main as tkinter_main
 
 
 def question(question: str, min: int, max: int, error_message: str) -> str:
@@ -64,15 +65,20 @@ if __name__ == "__main__":
                 "2 - Avec une représentation sous la forme d'une liste de chaque pilier de la tour")
             print('3 - Avec une représentation "graphique" en console, à l\'horizontale')
             print('4 - Avec une représentation "graphique" en console, à la verticale')
+            print("5 - Avec une représentation graphique avec tkinter")
 
             # Choix du style d'affichage du résultat par l'utilisateur
-            style = question("Votre choix : ", 1, 4,
+            style = question("Votre choix : ", 1, 5,
                              "Veuillez entrer un nombre compris entre 1 et 4.")
 
             # On appelle la bonne fonction hanoi avec les paramètres choisis par l'utilisateur
-            if style == 1:
+            if style == 1:  # Si l'utilisateur veut afficher le résultat en une liste avec toutes les étapes
                 hanoi_instructions(discs_number, "A", "B", "C")
-            else:
+            if style == 5:  # Si l'utilisateur veut afficher le résultat avec tkinter
+                print("Lancement de tkinter...")
+                # BUG #13 : On peut lancer tkinter qu'une seule fois, sinon il ne se passe plus rien après
+                tkinter_main(discs_number)
+            else:  # Si l'utilisateur veut afficher le résultat avec une représentation graphique en console
                 hanoi_resolution(style, discs_number)
 
         elif choice == 2:
