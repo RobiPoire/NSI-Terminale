@@ -4,7 +4,7 @@ Tri Fusion
 Le tri fusion est un algorithme de tri qui consiste à diviser la liste à trier en deux
 """
 
-__author__ = "RobiPoire, HabibLebsir, LukasGontard"
+__author__ = "RobiPoire"
 
 
 def interclassement(liste1: list, liste2: list) -> list:
