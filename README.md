@@ -64,7 +64,8 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
    d. [Dictionnaires](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Dictionnaires) <br>
 3. [Fractales & Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C3_Fractales_Arbres) <br>
 4. [Récursivité](https://github.com/RobiPoire/NSI-Terminale/blob/main/C4_Récursivité) <br>
-5. [La Tour de Hanoï](https://github.com/RobiPoire/NSI-Terminale/blob/main/C5_La_tour_de_Hanoi)
+5. [La Tour de Hanoï](https://github.com/RobiPoire/NSI-Terminale/blob/main/C5_La_tour_de_Hanoi) <br>
+6. [Algorithmes de tri](https://github.com/RobiPoire/NSI-Terminale/blob/main/C6_Algorithmes_Tri)
 
 
 ### Construit avec
