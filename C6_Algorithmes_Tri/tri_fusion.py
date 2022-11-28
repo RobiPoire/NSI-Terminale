@@ -21,11 +21,10 @@ def interclassement(liste1: list, liste2: list) -> list:
         return liste2
     elif liste2 == []:
         return liste1
+    elif liste1[0] <= liste2[0]:
+        return [liste1[0]] + interclassement(liste1[1:], liste2)
     else:
-        if liste1[0] <= liste2[0]:
-            return [liste1[0]] + interclassement(liste1[1:], liste2)
-        else:
-            return [liste2[0]] + interclassement(liste1, liste2[1:])
+        return [liste2[0]] + interclassement(liste1, liste2[1:])
 
 
 def tri_fusion(liste: list) -> list:
@@ -58,7 +57,6 @@ def complexite_tri_fusion(n: int) -> int:
     else:
         milieu = n // 2
         return complexite_tri_fusion(milieu) + complexite_tri_fusion(n - milieu) + n
-
 
 if __name__ == "__main__":
     print(interclassement([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]))
