@@ -5,7 +5,6 @@
 
 [![License][license-shield]][license-url]
 [![Commits][commits-shield]][commits-url]
-[![Issues][issues-shield]][issues-url]
 [![Contributors][contributors-shield]][contributors-url]
 
   <a href="https://lycee-oiselet.fr">
@@ -55,7 +54,6 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 
 ### Chapitres
 
-0. [TravauxAmélioré](https://github.com/RobiPoire/NSI-Terminale/blob/main/C0_Améliorations)
 1. [Révisions](https://github.com/RobiPoire/NSI-Terminale/blob/main/C1_Révisions)
 2. [Types Abstraits](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits) <br>
    a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Listes) <br>
@@ -64,10 +62,10 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
    d. [Dictionnaires](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Dictionnaires) <br>
 3. [Fractales & Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C3_Fractales_Arbres) <br>
 4. [Récursivité](https://github.com/RobiPoire/NSI-Terminale/blob/main/C4_Récursivité) <br>
-5. [La Tour de Hanoï](https://github.com/RobiPoire/NSI-Terminale/blob/main/C5_La_tour_de_Hanoi) <br>
+5. [La Tour de Hanoï (Projet)](https://github.com/RobiPoire/NSI-Terminale/blob/main/C5_La_tour_de_Hanoi) <br>
 6. [Algorithmes de tri](https://github.com/RobiPoire/NSI-Terminale/blob/main/C6_Algorithmes_Tri) <br>
+   a. [Tri Fusion](https://github.com/RobiPoire/NSI-Terminale/blob/main/C6_Algorithmes_Tri/Tri_Fusion) <br>
 7. [Programmation Orientée Objet](https://github.com/RobiPoire/NSI-Terminale/tree/main/C7_La_prog_orientee_objet)
-
 
 ### Construit avec
 
@@ -105,7 +103,5 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 [license-url]: https://github.com/RobiPoire/NSI-Terminale/blob/main/LICENSE
 [commits-shield]: https://img.shields.io/github/last-commit/RobiPoire/NSI-Terminale?style=for-the-badge
 [commits-url]: https://github.com/RobiPoire/NSI-Terminale/commits/main
-[issues-shield]: https://img.shields.io/github/issues/RobiPoire/NSI-Terminale?style=for-the-badge
-[issues-url]: https://github.com/RobiPoire/NSI-Terminale/issues
 [contributors-shield]: https://img.shields.io/github/contributors/RobiPoire/NSI-Terminale?style=for-the-badge
 [contributors-url]: https://github.com/RobiPoire/NSI-Terminale/graphs/contributors
