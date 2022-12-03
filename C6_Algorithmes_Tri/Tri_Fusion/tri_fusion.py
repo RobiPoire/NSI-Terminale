@@ -58,6 +58,7 @@ def complexite_tri_fusion(n: int) -> int:
         milieu = n // 2
         return complexite_tri_fusion(milieu) + complexite_tri_fusion(n - milieu) + n
 
+
 if __name__ == "__main__":
     print(interclassement([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]))
     print(tri_fusion([1, 3, 5, 7, 9, 2, 4, 6, 8, 10]))
