@@ -55,11 +55,11 @@ Ce dépôt contient tout les cours de NSI des terminales du lycée Oiselet 2022-
 ### Chapitres
 
 1. [Révisions](https://github.com/RobiPoire/NSI-Terminale/blob/main/C1_Révisions)
-2. [Types Abstraits](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits) <br>
-   a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Listes) <br>
-   b. [Piles](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Piles) <br>
-   c. [Files](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Files) <br>
-   d. [Dictionnaires](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Types_Abstraits/Dictionnaires) <br>
+2. [Structures de Données](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Structures_Données) <br>
+   a. [Listes](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Structures_Données/Listes) <br>
+   b. [Piles](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Structures_Données/Piles) <br>
+   c. [Files](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Structures_Données/Files) <br>
+   d. [Dictionnaires](https://github.com/RobiPoire/NSI-Terminale/blob/main/C2_Structures_Données/Dictionnaires) <br>
 3. [Fractales & Arbres](https://github.com/RobiPoire/NSI-Terminale/blob/main/C3_Fractales_Arbres) <br>
 4. [Récursivité](https://github.com/RobiPoire/NSI-Terminale/blob/main/C4_Récursivité) <br>
 5. [La Tour de Hanoï (Projet)](https://github.com/RobiPoire/NSI-Terminale/blob/main/C5_La_tour_de_Hanoi) <br>
