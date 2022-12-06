@@ -26,8 +26,10 @@ class JeuDeCarte:
         mon_paquet = []
         if self.__nombre_cartes == 32:
             numero_debut = 7
-        else:
+        elif self.__nombre_cartes == 52:
             numero_debut = 2
+        else:
+            raise ValueError("Le nombre de cartes doit être égal à 32 ou 52")
         for couleur in ["Coeur", "Carreau", "Pique", "Trèfle"]:
             for valeur in range(numero_debut, 15):
                 mon_paquet.append(Carte(valeur, couleur))
